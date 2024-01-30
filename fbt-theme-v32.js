@@ -163,6 +163,7 @@
  async function fbtTableUtils(widgetElement,currency) {
     if (widgetElement) {
         const productLists = widgetElement.querySelectorAll("tr.sf-product-list-item");
+     console.log("lists products",productLists)
         productLists.forEach((product) => {
             const priceContainer = product.querySelector(".sf-price-container");
           console.log(priceContainer,'priceContainer')
