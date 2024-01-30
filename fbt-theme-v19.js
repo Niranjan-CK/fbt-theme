@@ -159,7 +159,7 @@
         priceElement.textContent = `${currencySymbol}${currentPrice.toFixed(2)}`;
     }
 }
-export async function fbtTableUtils(widgetElement,currency) {
+ async function fbtTableUtils(widgetElement,currency) {
     if (widgetElement) {
         const productLists = widgetElement.querySelectorAll("tr.sf-product-list-item");
         productLists.forEach((product) => {
