@@ -88,18 +88,18 @@
     let totalPrice = 0;
     let anyCheckboxChecked = false;
     if (widgetElement) {
-        const productList = widgetElement.querySelector(`ul.sf-product-list`);
+        const productList = widgetElement.querySelector(`.sf-product-table`);
         const checkboxes = productList === null || productList === void 0 ? void 0 : productList.querySelectorAll('input[type="checkbox"]');
+        console.log(checkboxes);
         checkboxes === null || checkboxes === void 0 ? void 0 : checkboxes.forEach((checkbox) => {
-            var _a, _b, _c, _d, _e, _f;
+            var _a, _b, _c, _d, _e, _f, _g, _h;
             if (checkbox && checkbox.checked) {
                 anyCheckboxChecked = true;
                 const productId = checkbox.getAttribute("id");
                 const productItem = widgetElement.querySelector(`.sf-product-grid .sf-product-item[data-product-id="${productId}"]`);
-                let productRef = products;
-                let product = productRef.find((product) => Number(product.id) === Number(productId));
-                let selectedIndex = (_a = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _a === void 0 ? void 0 : _a.selectedIndex;
-                let price = (_d = (_c = (_b = product === null || product === void 0 ? void 0 : product.variants) === null || _b === void 0 ? void 0 : _b[selectedIndex]) === null || _c === void 0 ? void 0 : _c.variant_price) !== null && _d !== void 0 ? _d : (_f = (_e = product === null || product === void 0 ? void 0 : product.variants) === null || _e === void 0 ? void 0 : _e[0]) === null || _f === void 0 ? void 0 : _f.variant_price;
+                let product = products.find((product) => product.id === productId);
+                let selectedIndex = (_c = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _c === void 0 ? void 0 : _c.selectedIndex;
+                let price = (_f = (_e = (_d = product === null || product === void 0 ? void 0 : product.variants) === null || _d === void 0 ? void 0 : _d[selectedIndex]) === null || _e === void 0 ? void 0 : _e.variant_price) !== null && _f !== void 0 ? _f : (_h = (_g = product === null || product === void 0 ? void 0 : product.variants) === null || _g === void 0 ? void 0 : _g[0]) === null || _h === void 0 ? void 0 : _h.variant_price;
                 if (price)
                     totalPrice += price;
             }
@@ -110,10 +110,11 @@
                 : "0.00";
             const totalPriceText = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
             if (totalPriceText)
-                totalPriceText.innerHTML = `<strong>Total Price:</strong>${'$' + formattedTotalPrice}`;
+                totalPriceText.innerHTML = `Total Price: <strong>${getCurrencySymbol() + formattedTotalPrice}</strong>`;
         }
     }
 }
+
  async function disableCheckbox(widgetElement) {
     if (widgetElement) {
         const firstProductElement = widgetElement.querySelector(".sf-product-item");
