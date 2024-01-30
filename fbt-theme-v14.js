@@ -23,8 +23,6 @@
         const totalPriceText = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
         firstItemPrice(products, widgetElement).then((firstItemPr) => {
             if (widgetElement) {
-               
-                checkboxTriggered(products, widgetElement)
                 const addOnPrice = widgetElement.querySelector(".sf-add-on-product-price");
                 const thisPrice = widgetElement.querySelector('.sf-this-product-price');
                 if (thisPrice && firstItemPr) {
@@ -187,6 +185,7 @@
         console.log(widgetElement,'fbt')
         calculateTotalPrice(productList, widgetElement);
         disableCheckbox(widgetElement);
+        checkboxTriggered(productList, widgetElement)
         fbtTableUtils(widgetElement);
         fbtTablePriceCalculator(productList, widgetElement);
     
