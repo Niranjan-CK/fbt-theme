@@ -168,7 +168,7 @@
             if (priceContainer && priceContainer.textContent) {
                 const price = parseFloat(priceContainer.textContent.trim());
                 const currencySymbol = currency;
-                priceContainer.textContent = `${currencySymbol}${price}`;
+                priceContainer.textContent = `nillll`;
             }
         });
         const productListElement = widgetElement.querySelector("tr.sf-product-list-item");
