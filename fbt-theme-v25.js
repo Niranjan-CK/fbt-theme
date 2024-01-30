@@ -146,7 +146,7 @@
     if (!productListElement)
         return;
     let productRef = products;
-    let product = productRef.find((product) => product.id === mainProductId);
+    let product = productRef.find((product) => Number(product.id) === Number(mainProductId));
     const selectedVariant = product === null || product === void 0 ? void 0 : product.variants[selectedIndex];
     const variantElement = productListElement.querySelector(`[data-product-id="${mainProductId}"]`);
     const priceElement = variantElement === null || variantElement === void 0 ? void 0 : variantElement.querySelector('[data-tag="price"]');
