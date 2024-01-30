@@ -78,7 +78,7 @@
             addOnElement.innerHTML = `${checkedCount} ${addOnText}`;
         }
         calculateTotalPrice(products, widgetElement,currency);
-        // fbtTablePriceCalculator(products, widgetElement,currency);
+        fbtTablePriceCalculator(products, widgetElement,currency);
     };
     updateCheckedCount();
     // Event listener for change events
@@ -188,6 +188,6 @@
   disableCheckbox(widgetElement);
   checkboxTriggered(productList, widgetElement,currency)
   fbtTableUtils(widgetElement,currency);
-  // fbtTablePriceCalculator(productList, widgetElement,currency);
+  fbtTablePriceCalculator(productList, widgetElement,currency);
     
 }
