@@ -1,4 +1,4 @@
-export async function calculateTotalPrice(products, widgetElement) {
+ async function calculateTotalPrice(products, widgetElement) {
     let totalPrice = 0;
     let anyCheckboxChecked = false;
     if (widgetElement) {
@@ -47,7 +47,7 @@ export async function calculateTotalPrice(products, widgetElement) {
         }
     }
 }
-export async function checkboxTriggered(products, widgetElement) {
+ async function checkboxTriggered(products, widgetElement) {
     // Function to calculate the number of checked products
     const updateCheckedCount = () => {
         const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
@@ -89,7 +89,7 @@ export async function checkboxTriggered(products, widgetElement) {
     // Event listener for change events
     widgetElement.addEventListener("change", updateCheckedCount);
 }
-export async function fbtTablePriceCalculator(products, widgetElement) {
+ async function fbtTablePriceCalculator(products, widgetElement) {
     let totalPrice = 0;
     let anyCheckboxChecked = false;
     if (widgetElement) {
@@ -119,7 +119,7 @@ export async function fbtTablePriceCalculator(products, widgetElement) {
         }
     }
 }
-export async function disableCheckbox(widgetElement) {
+ async function disableCheckbox(widgetElement) {
     if (widgetElement) {
         const firstProductElement = widgetElement.querySelector(".sf-product-item");
         let checkbox = firstProductElement === null || firstProductElement === void 0 ? void 0 : firstProductElement.querySelector(".sf-product-checkbox");
@@ -133,7 +133,7 @@ export async function disableCheckbox(widgetElement) {
         }
     }
 }
-export async function firstItemPrice(products, widgetElement) {
+ async function firstItemPrice(products, widgetElement) {
     var _a, _b, _c, _d, _e, _f;
     if (widgetElement) {
         const firstProductElement = widgetElement.querySelector(".sf-product-item");
@@ -145,7 +145,7 @@ export async function firstItemPrice(products, widgetElement) {
     }
     return undefined;
 }
-export async function fbtTableVariant(widgetElement, mainProductId, selectedIndex, currencyRate, currencySymbol, products) {
+ async function fbtTableVariant(widgetElement, mainProductId, selectedIndex, currencyRate, currencySymbol, products) {
     const productListElement = widgetElement.querySelector("ul.sf-product-list");
     if (!productListElement)
         return;
@@ -163,7 +163,7 @@ export async function fbtTableVariant(widgetElement, mainProductId, selectedInde
         priceElement.textContent = `${currencySymbol}${currentPrice.toFixed(2)}`;
     }
 }
-export async function fbtTableUtils(widgetElement) {
+ async function fbtTableUtils(widgetElement) {
     if (widgetElement) {
         const productListElement = widgetElement.querySelector("ul.sf-product-list");
         if (!productListElement)
@@ -182,7 +182,7 @@ export async function fbtTableUtils(widgetElement) {
         }
     }
 }
-export function fbtProductView(products) {
+ function fbtProductView(products) {
     const embeddedElement = document.getElementById('sf-viewport-box');
     console.log('embeddedElement');
     let doc;
