@@ -165,10 +165,14 @@
         const productLists = widgetElement.querySelectorAll("tr.sf-product-list-item");
         productLists.forEach((product) => {
             const priceContainer = product.querySelector(".sf-price-container");
+          console.log(priceContainer,'priceContainer')
             if (priceContainer && priceContainer.textContent) {
+          console.log(priceContainer.textContent,'priceContainer.textContent')
+                
                 const price = parseFloat(priceContainer.textContent.trim());
+             console.log(price,'price')
                 const currencySymbol = currency;
-                priceContainer.textContent = `nillll`;
+                priceContainer.textContent = `${currencySymbol}${price}`;
             }
         });
         const productListElement = widgetElement.querySelector("tr.sf-product-list-item");
