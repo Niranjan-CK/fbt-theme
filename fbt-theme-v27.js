@@ -90,7 +90,6 @@
     if (widgetElement) {
         const productList = widgetElement.querySelector(`.sf-product-table`);
         const checkboxes = productList === null || productList === void 0 ? void 0 : productList.querySelectorAll('input[type="checkbox"]');
-        console.log(checkboxes);
         checkboxes === null || checkboxes === void 0 ? void 0 : checkboxes.forEach((checkbox) => {
             var _a, _b, _c, _d, _e, _f, _g, _h;
             if (checkbox && checkbox.checked) {
@@ -142,6 +141,7 @@
     return undefined;
 }
  async function fbtTableVariant( mainProductId, selectedIndex, currencySymbol, products) {
+  console.log('id:-',mainProductId,'index:-',selectedIndex,'currencySymbol:-',currencySymbol,'products:-',products)
     const widgetElement = document.querySelector('.sf-container');
     const productListElement = widgetElement.querySelector("ul.sf-product-list");
     if (!productListElement)
@@ -165,7 +165,6 @@
         const productLists = widgetElement.querySelectorAll("tr.sf-product-list-item");
         productLists.forEach((product) => {
             const priceContainer = product.querySelector(".sf-price-container");
-         console.log(priceContainer,'price container');
             if (priceContainer && priceContainer.textContent) {
                 const price = parseFloat(priceContainer.textContent.trim());
                 const currencySymbol = currency;
@@ -191,15 +190,12 @@
     }
 }
  function fbtProductView(products,currency) {
-  console.log(products)
- const productList = products
-
-        const widgetElement = document.querySelector('.sf-container');
-        console.log(widgetElement,'fbt')
-        calculateTotalPrice(productList, widgetElement);
-        disableCheckbox(widgetElement);
-        checkboxTriggered(productList, widgetElement,currency)
-        fbtTableUtils(widgetElement,currency);
-        fbtTablePriceCalculator(productList, widgetElement,currency);
+  const productList = products
+  const widgetElement = document.querySelector('.sf-container');
+  calculateTotalPrice(productList, widgetElement);
+  disableCheckbox(widgetElement);
+  checkboxTriggered(productList, widgetElement,currency)
+  fbtTableUtils(widgetElement,currency);
+  fbtTablePriceCalculator(productList, widgetElement,currency);
     
 }
