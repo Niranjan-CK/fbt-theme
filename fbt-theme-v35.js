@@ -1,4 +1,4 @@
- async function calculateTotalPrice(products, widgetElement) {
+ async function calculateTotalPrice(products, widgetElement,currency) {
     let totalPrice = 0;
     let anyCheckboxChecked = false;
     if (widgetElement) {
@@ -26,11 +26,11 @@
                 const addOnPrice = widgetElement.querySelector(".sf-add-on-product-price");
                 const thisPrice = widgetElement.querySelector('.sf-this-product-price');
                 if (thisPrice && firstItemPr) {
-                    thisPrice.innerHTML = `$  ${firstItemPr}`;
+                    thisPrice.innerHTML = `${currency}  ${firstItemPr}`;
                 }
                 if (addOnPrice) {
                     if (firstItemPr !== undefined) {
-                        addOnPrice.innerHTML = `$  ${(totalPrice - firstItemPr).toFixed(2)}
+                        addOnPrice.innerHTML = `${currency}  ${(totalPrice - firstItemPr).toFixed(2)}
               `;
                     }
                 }
@@ -77,7 +77,7 @@
             const addOnText = checkedCount <= 1 ? "Add-on" : "Add-ons";
             addOnElement.innerHTML = `${checkedCount} ${addOnText}`;
         }
-        calculateTotalPrice(products, widgetElement);
+        calculateTotalPrice(products, widgetElement,currency);
         fbtTablePriceCalculator(products, widgetElement,currency);
     };
     updateCheckedCount();
@@ -184,7 +184,7 @@
  function fbtProductView(products,currency) {
   const productList = products
   const widgetElement = document.querySelector('.sf-container');
-  calculateTotalPrice(productList, widgetElement);
+  calculateTotalPrice(productList, widgetElement,currency);
   disableCheckbox(widgetElement);
   checkboxTriggered(productList, widgetElement,currency)
   fbtTableUtils(widgetElement,currency);
