@@ -159,15 +159,27 @@
         priceElement.textContent = `${currencySymbol}${currentPrice.toFixed(2)}`;
     }
 }
- async function fbtTableUtils(widgetElement) {
+export async function fbtTableUtils(widgetElement,currency) {
     if (widgetElement) {
-        const productListElement = widgetElement.querySelector("ul.sf-product-list");
+        const productLists = widgetElement.querySelectorAll("tr.sf-product-list-item");
+        productLists.forEach((product) => {
+            const priceContainer = product.querySelector(".sf-price-container");
+            if (priceContainer && priceContainer.textContent) {
+                const price = parseFloat(priceContainer.textContent.trim());
+                const currency = getCurrency();
+                const currencySymbol = currency;
+                const currencyRate = currency.rate;
+                const currentPrice = (price * currencyRate).toFixed(2);
+                priceContainer.textContent = `${currencySymbol}${currentPrice}`;
+            }
+        });
+        const productListElement = widgetElement.querySelector("tr.sf-product-list-item");
         if (!productListElement)
             return;
-        const firstLiElement = productListElement.querySelector("li:first-child");
+        const firstLiElement = productListElement.querySelector("td:first-child");
         if (!firstLiElement)
             return;
-        const productNameSpan = firstLiElement.querySelector(".sf-product-title");
+        const productNameSpan = productListElement.querySelector(".sf-product-title");
         if (productNameSpan) {
             productNameSpan.innerHTML = `<strong>This item:</strong> ${productNameSpan.innerHTML}`;
         }
@@ -187,7 +199,7 @@
         calculateTotalPrice(productList, widgetElement);
         disableCheckbox(widgetElement);
         checkboxTriggered(productList, widgetElement,currency)
-        fbtTableUtils(widgetElement);
+        fbtTableUtils(widgetElement,currency);
         fbtTablePriceCalculator(productList, widgetElement,currency);
     
 }
