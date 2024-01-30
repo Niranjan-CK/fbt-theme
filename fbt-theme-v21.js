@@ -178,7 +178,7 @@
             return;
         const productNameSpan = productListElement.querySelector(".sf-product-title");
         if (productNameSpan) {
-            productNameSpan.innerHTML = `<strong>This item:</strong> ${productNameSpan.innerHTML}`;
+            productNameSpan.textContent = `<strong>This item:</strong> ${productNameSpan.innerHTML}`;
         }
         const checkbox = firstLiElement.querySelector(".sf-product-checkbox");
         if (checkbox instanceof HTMLInputElement) {
