@@ -171,7 +171,7 @@
             return;
         const productNameSpan = productListElement.querySelector(".sf-product-title");
         if (productNameSpan && !productNameSpan.innerHTML.includes('<strong>This item:</strong>')) {
-              // productNameSpan.innerHTML = `<strong>This item:</strong> ${productNameSpan.innerHTML}`;
+              productNameSpan.innerHTML = `<strong>This item:</strong> ${productNameSpan.innerHTML}`;
           }
 
         const checkbox = firstLiElement.querySelector(".sf-product-checkbox");
@@ -188,6 +188,6 @@
   disableCheckbox(widgetElement);
   checkboxTriggered(productList, widgetElement,currency)
   fbtTableUtils(widgetElement,currency);
-  fbtTablePriceCalculator(productList, widgetElement,currency);
+  // fbtTablePriceCalculator(productList, widgetElement,currency);
     
 }
