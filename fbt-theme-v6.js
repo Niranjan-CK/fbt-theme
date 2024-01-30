@@ -202,6 +202,7 @@
     }
     function renderFbt(doc) {
         const widgetElement = doc.querySelector('.sf-container');
+        console.log(widgetElement,'fbt')
         calculateTotalPrice(productList, widgetElement);
         disableCheckbox(widgetElement);
         fbtTableUtils(widgetElement);
