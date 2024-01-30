@@ -183,8 +183,9 @@
     }
 }
  function fbtProductView(products) {
+ const productList = JSON.parse(products)
     const embeddedElement = document.getElementById('sf-viewport-box');
-    console.log('embeddedElement');
+    console.log('embeddedElement',productList);
     let doc;
     function handleIframeLoad() {
         doc = embeddedElement.contentDocument;
@@ -200,9 +201,9 @@
     }
     function renderFbt(doc) {
         const widgetElement = doc.querySelector('.sf-container');
-        calculateTotalPrice(products, widgetElement);
+        calculateTotalPrice(productList, widgetElement);
         disableCheckbox(widgetElement);
         fbtTableUtils(widgetElement);
-        fbtTablePriceCalculator(products, widgetElement);
+        fbtTablePriceCalculator(productList, widgetElement);
     }
 }
