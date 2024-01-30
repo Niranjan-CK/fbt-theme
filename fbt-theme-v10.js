@@ -23,11 +23,8 @@
         const totalPriceText = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
         firstItemPrice(products, widgetElement).then((firstItemPr) => {
             if (widgetElement) {
-                const addOnElement = widgetElement.querySelector(".sf-add-on-product");
-                if (addOnElement) {
-                    addOnElement.innerHTML = `${products.length - 1} Add-ons`;
-                }
-                // checkboxTriggered(products, doc)
+               
+                checkboxTriggered(products, doc)
                 const addOnPrice = widgetElement.querySelector(".sf-add-on-product-price");
                 const thisPrice = widgetElement.querySelector('.sf-this-product-price');
                 if (thisPrice && firstItemPr) {
