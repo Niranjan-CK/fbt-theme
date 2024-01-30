@@ -37,7 +37,7 @@
             }
         });
         if (totalPriceText) {
-            totalPriceText.innerHTML = `${'$' + formattedTotalPrice}`;
+            totalPriceText.innerHTML = `${currency + formattedTotalPrice}`;
             return true;
         }
     }
