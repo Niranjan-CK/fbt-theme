@@ -166,11 +166,8 @@
             const priceContainer = product.querySelector(".sf-price-container");
             if (priceContainer && priceContainer.textContent) {
                 const price = parseFloat(priceContainer.textContent.trim());
-                const currency = getCurrency();
                 const currencySymbol = currency;
-                const currencyRate = currency.rate;
-                const currentPrice = (price * currencyRate).toFixed(2);
-                priceContainer.textContent = `${currencySymbol}${currentPrice}`;
+                priceContainer.textContent = `${currencySymbol}${price}`;
             }
         });
         const productListElement = widgetElement.querySelector("tr.sf-product-list-item");
