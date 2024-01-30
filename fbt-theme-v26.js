@@ -141,7 +141,8 @@
     }
     return undefined;
 }
- async function fbtTableVariant(widgetElement, mainProductId, selectedIndex, currencyRate, currencySymbol, products) {
+ async function fbtTableVariant( mainProductId, selectedIndex, currencySymbol, products) {
+    const widgetElement = document.querySelector('.sf-container');
     const productListElement = widgetElement.querySelector("ul.sf-product-list");
     if (!productListElement)
         return;
