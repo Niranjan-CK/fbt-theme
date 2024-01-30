@@ -183,6 +183,7 @@
     }
 }
  function fbtProductView(products) {
+  console.log(products)
  const productList = JSON.parse(products)
     const embeddedElement = document.getElementById('sf-viewport-box');
     console.log('embeddedElement',productList);
