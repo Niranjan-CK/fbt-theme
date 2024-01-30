@@ -24,7 +24,7 @@
         firstItemPrice(products, widgetElement).then((firstItemPr) => {
             if (widgetElement) {
                
-                checkboxTriggered(products, doc)
+                checkboxTriggered(products, widgetElement)
                 const addOnPrice = widgetElement.querySelector(".sf-add-on-product-price");
                 const thisPrice = widgetElement.querySelector('.sf-this-product-price');
                 if (thisPrice && firstItemPr) {
