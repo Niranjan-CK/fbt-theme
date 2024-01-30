@@ -164,6 +164,7 @@
         const productLists = widgetElement.querySelectorAll("tr.sf-product-list-item");
         productLists.forEach((product) => {
             const priceContainer = product.querySelector(".sf-price-container");
+         console.log(priceContainer,'price container');
             if (priceContainer && priceContainer.textContent) {
                 const price = parseFloat(priceContainer.textContent.trim());
                 const currencySymbol = currency;
