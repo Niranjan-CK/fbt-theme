@@ -164,18 +164,18 @@
     if (widgetElement) {
         const productLists = widgetElement.querySelectorAll("tr.sf-product-list-item");
      console.log("lists products",productLists)
-        productLists.forEach((product) => {
-            const priceContainer = product.querySelector(".sf-price-container");
-          console.log(priceContainer,'priceContainer')
-            if (priceContainer && priceContainer.textContent) {
-          console.log( typeof priceContainer.textContent,'priceContainer.textContent---',priceContainer.textContent)
+        // productLists.forEach((product) => {
+        //     const priceContainer = product.querySelector(".sf-price-container");
+        //   console.log(priceContainer,'priceContainer')
+        //     if (priceContainer && priceContainer.textContent) {
+        //   console.log( typeof priceContainer.textContent,'priceContainer.textContent---',priceContainer.textContent)
                 
-                const price = parseFloat(priceContainer.textContent.trim());
-             console.log(price,'price')
-                const currencySymbol = currency;
-                priceContainer.textContent = `${currencySymbol}${price}`;
-            }
-        });
+        //         const price = parseFloat(priceContainer.textContent.trim());
+        //      console.log(price,'price')
+        //         const currencySymbol = currency;
+        //         priceContainer.textContent = `${currencySymbol}${price}`;
+        //     }
+        // });
         const productListElement = widgetElement.querySelector("tr.sf-product-list-item");
         if (!productListElement)
             return;
@@ -183,6 +183,7 @@
         if (!firstLiElement)
             return;
         const productNameSpan = productListElement.querySelector(".sf-product-title");
+     console.log(productNameSpan,'name span')
         if (productNameSpan && !productNameSpan.innerHTML.includes('<strong>This item:</strong>')) {
               productNameSpan.innerHTML = `<strong>This item:</strong> ${productNameSpan.innerHTML}`;
           }
