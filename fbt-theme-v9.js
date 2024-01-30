@@ -186,7 +186,7 @@
   console.log(products)
  const productList = products
 
-        const widgetElement = doc.querySelector('.sf-container');
+        const widgetElement = document.querySelector('.sf-container');
         console.log(widgetElement,'fbt')
         calculateTotalPrice(productList, widgetElement);
         disableCheckbox(widgetElement);
