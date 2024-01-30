@@ -185,28 +185,12 @@
  function fbtProductView(products) {
   console.log(products)
  const productList = products
-    const embeddedElement = document.getElementById('sf-viewport-box');
-    console.log('embeddedElement',productList);
-  console.log(embeddedElement);
-    let doc;
-    function handleIframeLoad() {
-        doc = embeddedElement.contentDocument;
-        if (doc) {
-            renderFbt(doc);
-        }
-    }
-    if (embeddedElement) {
-        embeddedElement.onload = handleIframeLoad;
-        if (embeddedElement.contentDocument.readyState === 'complete') {
-            handleIframeLoad();
-        }
-    }
-    function renderFbt(doc) {
+
         const widgetElement = doc.querySelector('.sf-container');
         console.log(widgetElement,'fbt')
         calculateTotalPrice(productList, widgetElement);
         disableCheckbox(widgetElement);
         fbtTableUtils(widgetElement);
         fbtTablePriceCalculator(productList, widgetElement);
-    }
+    
 }
