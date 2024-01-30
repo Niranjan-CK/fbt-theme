@@ -187,6 +187,7 @@
  const productList = products
     const embeddedElement = document.getElementById('sf-viewport-box');
     console.log('embeddedElement',productList);
+  console.log(embeddedElement);
     let doc;
     function handleIframeLoad() {
         doc = embeddedElement.contentDocument;
