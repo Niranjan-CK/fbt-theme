@@ -167,7 +167,7 @@
             const priceContainer = product.querySelector(".sf-price-container");
           console.log(priceContainer,'priceContainer')
             if (priceContainer && priceContainer.textContent) {
-          console.log( typeof priceContainer.textContent,'priceContainer.textContent')
+          console.log( typeof priceContainer.textContent,'priceContainer.textContent---',priceContainer.textContent)
                 
                 const price = parseFloat(priceContainer.textContent.trim());
              console.log(price,'price')
