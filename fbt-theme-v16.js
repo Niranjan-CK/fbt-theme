@@ -42,7 +42,7 @@
         }
     }
 }
- async function checkboxTriggered(products, widgetElement) {
+ async function checkboxTriggered(products, widgetElement,currency) {
     // Function to calculate the number of checked products
     const updateCheckedCount = () => {
         const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
@@ -78,13 +78,13 @@
             addOnElement.innerHTML = `${checkedCount} ${addOnText}`;
         }
         calculateTotalPrice(products, widgetElement);
-        fbtTablePriceCalculator(products, widgetElement);
+        fbtTablePriceCalculator(products, widgetElement,currency);
     };
     updateCheckedCount();
     // Event listener for change events
     widgetElement.addEventListener("change", updateCheckedCount);
 }
- async function fbtTablePriceCalculator(products, widgetElement) {
+ async function fbtTablePriceCalculator(products, widgetElement,currency) {
     let totalPrice = 0;
     let anyCheckboxChecked = false;
     if (widgetElement) {
@@ -110,7 +110,7 @@
                 : "0.00";
             const totalPriceText = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
             if (totalPriceText)
-                totalPriceText.innerHTML = `Total Price: <strong>${getCurrencySymbol() + formattedTotalPrice}</strong>`;
+                totalPriceText.innerHTML = `Total Price: <strong>${ currency + formattedTotalPrice}</strong>`;
         }
     }
 }
@@ -178,7 +178,7 @@
         }
     }
 }
- function fbtProductView(products) {
+ function fbtProductView(products,currency) {
   console.log(products)
  const productList = products
 
@@ -186,8 +186,8 @@
         console.log(widgetElement,'fbt')
         calculateTotalPrice(productList, widgetElement);
         disableCheckbox(widgetElement);
-        checkboxTriggered(productList, widgetElement)
+        checkboxTriggered(productList, widgetElement,currency)
         fbtTableUtils(widgetElement);
-        fbtTablePriceCalculator(productList, widgetElement);
+        fbtTablePriceCalculator(productList, widgetElement,currency);
     
 }
