@@ -106,14 +106,16 @@ async function cartButtonText(widgetElement, checkboxCount) {
                 checkedCount++;
             }
         });
+        cartButtonText(widgetElement,checkedCount+1)
         const addOnElement = widgetElement.querySelector(".sf-add-on-product");
         if (addOnElement) {
             const addOnText = checkedCount <= 1 ? "Add-on" : "Add-ons";
             addOnElement.innerHTML = `${checkedCount} ${addOnText}`;
+          
         }
         calculateTotalPrice(products, widgetElement,currency);
         fbtTablePriceCalculator(products, widgetElement,currency);
-        cartButtonText(widgetElement,checkedCount+1)
+        
     };
     updateCheckedCount();
     // Event listener for change events
