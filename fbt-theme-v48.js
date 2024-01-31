@@ -43,13 +43,9 @@
     }
 }
 async function cartButtonText(widgetElement, checkboxCount) {
-  console.log(widgetElement,'-',checkboxCount)
     const multiCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-multi-cart");
     const twoCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-two-cart");
     const singleCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-single-cart");
- console.log(multiCartElement,'multiCartElement')
- console.log(twoCartElement,'twoCartElement')
- console.log(singleCartElement,'singleCartElement')
     if (checkboxCount === 2) {
         if (twoCartElement)
             twoCartElement.style.display = "block";
