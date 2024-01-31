@@ -113,7 +113,7 @@ async function cartButtonText(widgetElement, checkboxCount) {
         }
         calculateTotalPrice(products, widgetElement,currency);
         fbtTablePriceCalculator(products, widgetElement,currency);
-        cartButtonText(widgetElement,checkedCount)
+        cartButtonText(widgetElement,checkedCount+1)
     };
     updateCheckedCount();
     // Event listener for change events
