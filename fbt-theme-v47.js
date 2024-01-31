@@ -82,7 +82,7 @@ async function cartButtonText(widgetElement, checkboxCount) {
         const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
         let checkedCount = -1;
         checkboxes.forEach((checkbox) => {
-            const productItem = checkbox.closest(".sf-product-item");
+            const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
             if (!productItem)
                 return;
             const productImage = productItem.querySelector(".sf-product-image");
