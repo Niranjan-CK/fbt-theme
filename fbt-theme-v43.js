@@ -42,6 +42,36 @@
         }
     }
 }
+async function cartButtonText(widgetElement, checkboxCount) {
+    const multiCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-multi-cart");
+    const twoCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-two-cart");
+    const singleCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-single-cart");
+    if (checkboxCount === 2) {
+        if (twoCartElement)
+            twoCartElement.style.display = "block";
+        if (multiCartElement)
+            multiCartElement.style.display = "none";
+        if (singleCartElement)
+            singleCartElement.style.display = "none";
+    }
+    else if (checkboxCount === 1) {
+        if (twoCartElement)
+            twoCartElement.style.display = "none";
+        if (multiCartElement)
+            multiCartElement.style.display = "none";
+        if (singleCartElement)
+            singleCartElement.style.display = "block";
+    }
+    else {
+        if (twoCartElement)
+            twoCartElement.style.display = "none";
+        if (multiCartElement)
+            multiCartElement.style.display = "block";
+        if (singleCartElement)
+            singleCartElement.style.display = "none";
+    }
+}
+
  async function checkboxTriggered(products, widgetElement,currency) {
     // Function to calculate the number of checked products
     const updateCheckedCount = () => {
@@ -79,6 +109,7 @@
         }
         calculateTotalPrice(products, widgetElement,currency);
         fbtTablePriceCalculator(products, widgetElement,currency);
+        cartButtonText(widgetElement,checkedCount)
     };
     updateCheckedCount();
     // Event listener for change events
