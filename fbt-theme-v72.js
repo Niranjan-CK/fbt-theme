@@ -37,7 +37,7 @@ async function calculateTotalPrice(products, widgetElement,currency) {
           }
       });
       if (totalPriceText) {
-          totalPriceText.innerHTML = `${currency + formattedTotalPrice}`;
+          totalPriceText.innerHTML = ` dsdsds ${currency + formattedTotalPrice}`;
           return true;
       }
   }
