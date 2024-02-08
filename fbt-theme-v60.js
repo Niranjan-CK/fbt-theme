@@ -128,7 +128,9 @@ async function fbtTablePriceCalculator(products, widgetElement,currency) {
     
     priceContainers.forEach(container => {
       console.log(container,'container')
-        container.textContent = 'l' + container.textContent.trim();
+        if (!container.textContent.includes(currency)) {
+        container.textContent = currency + container.textContent.trim();
+    }
     });
       const checkboxes = productList === null || productList === void 0 ? void 0 : productList.querySelectorAll('input[type="checkbox"]');
       checkboxes === null || checkboxes === void 0 ? void 0 : checkboxes.forEach((checkbox) => {
