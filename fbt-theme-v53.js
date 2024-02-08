@@ -122,6 +122,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency) {
   let anyCheckboxChecked = false;
   if (widgetElement) {
       const productList = widgetElement.querySelector(`.sf-product-table`);
+      console.log(productList,'list')
       const checkboxes = productList === null || productList === void 0 ? void 0 : productList.querySelectorAll('input[type="checkbox"]');
       checkboxes === null || checkboxes === void 0 ? void 0 : checkboxes.forEach((checkbox) => {
           var _a, _b, _c, _d, _e, _f, _g, _h;
@@ -161,7 +162,6 @@ async function firstItemPrice(products, widgetElement) {
   return undefined;
 }
 async function fbtTableVariant( mainProductId, selectedIndex, currencySymbol, products) {
-  console.log("rishal")
   const widgetElement = document.querySelector('.sf-container');
   const productListElement = widgetElement.querySelector("ul.sf-product-list");
   if (!productListElement)
@@ -171,14 +171,13 @@ async function fbtTableVariant( mainProductId, selectedIndex, currencySymbol, pr
   const selectedVariant = product === null || product === void 0 ? void 0 : product.variants[selectedIndex];
   const variantElement = productListElement.querySelector(`[data-product-id="${mainProductId}"]`);
   const priceElement = variantElement === null || variantElement === void 0 ? void 0 : variantElement.querySelector('[data-tag="price"]');
-  console.log(priceElement,'dssdssd')
   if (priceElement) {
       const currentPrice = selectedVariant.variant_price * currencyRate;
       if (variantElement &&
           variantElement.querySelector(`[data-tag="on-sale"]`)) {
           return;
       }
-      priceElement.textContent = `${currencySymbol} --- --- - - - - -${currentPrice.toFixed(2)}`;
+      priceElement.textContent = `${currencySymbol}${currentPrice.toFixed(2)}`;
   }
 }
 async function fbtTableUtils(widgetElement,currency) {
