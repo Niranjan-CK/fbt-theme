@@ -88,7 +88,7 @@ async function cartButtonText(widgetElement, checkboxCount) {
   }
 }
 
-async function checkboxTriggered(products, widgetElement,currency,totalPriceText) {
+async function checkboxTriggered(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
   // Function to calculate the number of checked products
   const updateCheckedCount = () => {
       const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
