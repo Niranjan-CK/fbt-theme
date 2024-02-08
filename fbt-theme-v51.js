@@ -170,6 +170,7 @@ async function fbtTableVariant( mainProductId, selectedIndex, currencySymbol, pr
   const selectedVariant = product === null || product === void 0 ? void 0 : product.variants[selectedIndex];
   const variantElement = productListElement.querySelector(`[data-product-id="${mainProductId}"]`);
   const priceElement = variantElement === null || variantElement === void 0 ? void 0 : variantElement.querySelector('[data-tag="price"]');
+  console.log(priceElement,'dssdssd')
   if (priceElement) {
       const currentPrice = selectedVariant.variant_price * currencyRate;
       if (variantElement &&
