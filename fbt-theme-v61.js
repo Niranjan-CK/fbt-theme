@@ -106,7 +106,7 @@ async function checkboxTriggered(products, widgetElement,currency) {
       const addOnElement = widgetElement.querySelector(".sf-add-on-product");
       if (addOnElement) {
           const addOnText = checkedCount <= 1 ? "Add-on" : "Add-ons";
-          addOnElement.innerHTML = `${checkedCount} ${addOnText}`;
+          addOnElement.innerHTML = `${checkedCount < 0 ? 0 : checkedCount} ${addOnText}`;
         
       }
       calculateTotalPrice(products, widgetElement,currency);
@@ -122,15 +122,11 @@ async function fbtTablePriceCalculator(products, widgetElement,currency) {
   let anyCheckboxChecked = false;
   if (widgetElement) {
       const productList = widgetElement.querySelector(`.sf-product-table`);
-      console.log(productList,'list')
-    const priceContainers = productList.querySelectorAll('.sf-table-price-container');
-    console.log(priceContainers,'priceContainers')
-    
+      const priceContainers = productList.querySelectorAll('.sf-table-price-container');    
     priceContainers.forEach(container => {
-      console.log(container,'container')
         if (!container.textContent.includes(currency)) {
-        container.textContent = currency + container.textContent.trim();
-    }
+          container.textContent = currency + container.textContent.trim();
+      }
     });
       const checkboxes = productList === null || productList === void 0 ? void 0 : productList.querySelectorAll('input[type="checkbox"]');
       checkboxes === null || checkboxes === void 0 ? void 0 : checkboxes.forEach((checkbox) => {
