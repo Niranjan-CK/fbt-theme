@@ -76,6 +76,7 @@ async function checkboxTriggered(products, widgetElement,currency) {
   // Function to calculate the number of checked products
   const updateCheckedCount = () => {
       const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
+      console.log(checkboxes)
       let checkedCount = -1;
       checkboxes.forEach((checkbox) => {
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
