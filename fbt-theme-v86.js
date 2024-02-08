@@ -42,10 +42,10 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
           return true;
       }
     const thisItemValue = widgetElement.querySelectorAll('.sf-this-item');
-
+    console.log(thisItemValue,'sss')
     if(thisItemValue){
       for (var i = 1; i < thisItemValue.length; i++) {
-        items[i].innerHTML = '';
+        thisItemValue[i].innerHTML = '';
       }
     }
   }
