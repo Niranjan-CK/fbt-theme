@@ -38,7 +38,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
       });
     console.log(totalPriceText,'price total')
       if (totalPriceTextValue) {
-          totalPriceTextValue.innerHTML = ` ${totalPriceText} : ${currency + formattedTotalPrice}`;
+          totalPriceTextValue.innerHTML = totalPriceText + ':'+ `${currency + formattedTotalPrice}`;
           return true;
       }
   }
