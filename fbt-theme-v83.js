@@ -222,7 +222,7 @@ async function fbtTableUtils(widgetElement,currency) {
       const firstLiElement = productListElement.querySelector("td:first-child");
       if (!firstLiElement)
           return;
-      const productNameSpan = productListElement.querySelector(".sf-product-title");
+      const productNameSpan = productListElement.querySelector(".sf-name-variant-container");
     console.log(productNameSpan)
       if (productNameSpan && productNameSpan.innerHTML.includes('<strong>This item:</strong>')) {
             console.log("this item include")
