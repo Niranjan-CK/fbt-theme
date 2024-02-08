@@ -36,6 +36,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               }
           }
       });
+    console.log(totalPriceText,'price total')
       if (totalPriceTextValue) {
           totalPriceTextValue.innerHTML = ` ${totalPriceText} : ${currency + formattedTotalPrice}`;
           return true;
@@ -103,7 +104,6 @@ async function checkboxTriggered(products, widgetElement,currency) {
               checkedCount++;
           }
       });
-        console.log(checkedCount,'dsd',checkboxes.length -1)
     
       if(  checkedCount < (checkboxes.length - 1))
       {
@@ -174,9 +174,9 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
           const formattedTotalPrice = anyCheckboxChecked
               ? totalPrice.toFixed(2)
               : "0.00";
-          const totalPriceText = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
-          if (totalPriceText)
-              totalPriceText.innerHTML = `${totalPriceText} : <strong>${ currency + formattedTotalPrice}</strong>`;
+          const totalPriceTextDiv = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
+          if (totalPriceTextDiv)
+              totalPriceTextDiv.innerHTML = `${totalPriceText} : <strong>${ currency + formattedTotalPrice}</strong>`;
       }
   }
 }
