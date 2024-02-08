@@ -108,8 +108,9 @@ async function checkboxTriggered(products, widgetElement,currency) {
       if(  checkedCount < checkboxes.length)
       {
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
-        console.log(discountTextElements,'dsd')
-        discountTextElements.style.display = 'none';
+        for (let i = 0; i < discountTextElements.length; i++) {
+              discountTextElements[i].style.display = 'none';
+          }
 
       }
       cartButtonText(widgetElement,checkedCount+1)
