@@ -30,17 +30,16 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               }
               if (addOnPrice) {
                   if (firstItemPr !== undefined) {
-                      addOnPrice.innerHTML = `${currency}  ${(totalPrice - firstItemPr).toFixed(2)}
+                      const priceValue = (totalPrice - firstItemPr).toFixed(2)
+                      addOnPrice.innerHTML = `${currency}  ${ priceValue > 0 ? priceValue : 0}
             `;
                   }
               }
             const thisItemValue = widgetElement.querySelectorAll('.sf-this-item');
-            console.log(thisItemValue,'sss')
             if(thisItemValue){
               for (var i = 1; i < thisItemValue.length; i++) {
                 var parentElement = thisItemValue[i].parentNode;
                   var item = thisItemValue[i];
-                  // Remove the element from its parent node
                   item.parentNode.removeChild(item);
               }
             }
