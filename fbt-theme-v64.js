@@ -103,6 +103,15 @@ async function checkboxTriggered(products, widgetElement,currency) {
               checkedCount++;
           }
       });
+        console.log(checkedCount,'dsd',checkboxes.length)
+    
+      if(  checkedCount < checkboxes.length)
+      {
+        const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
+        console.log(discountTextElements,'dsd')
+        discountTextElements.style.display = 'none';
+
+      }
       cartButtonText(widgetElement,checkedCount+1)
       const addOnElement = widgetElement.querySelector(".sf-add-on-product");
       if (addOnElement) {
