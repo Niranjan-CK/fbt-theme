@@ -113,6 +113,14 @@ async function checkboxTriggered(products, widgetElement,currency) {
           }
 
       }
+        else if(checkedCount === -1){
+          const addOnElement = widgetElement.querySelector(".sf-add-on-product-price");
+      if (addOnElement) {
+          addOnElement.innerHTML = currency + '0';
+        
+      }
+          
+        }
       else{
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
         for (let i = 0; i < discountTextElements.length; i++) {
