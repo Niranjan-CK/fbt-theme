@@ -176,7 +176,7 @@ async function fbtTableVariant( mainProductId, selectedIndex, currencySymbol, pr
           variantElement.querySelector(`[data-tag="on-sale"]`)) {
           return;
       }
-      priceElement.textContent = `${currencySymbol}${currentPrice.toFixed(2)}`;
+      priceElement.textContent = `${currencySymbol} --- --- - - - - -${currentPrice.toFixed(2)}`;
   }
 }
 async function fbtTableUtils(widgetElement,currency) {
