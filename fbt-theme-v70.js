@@ -176,7 +176,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency) {
               : "0.00";
           const totalPriceText = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
           if (totalPriceText)
-              totalPriceText.innerHTML = `Total Price: <strong>${ currency + formattedTotalPrice}</strong>`;
+              totalPriceText.innerHTML = `<strong>${ currency + formattedTotalPrice}</strong>`;
       }
   }
 }
