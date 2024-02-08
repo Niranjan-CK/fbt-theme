@@ -37,7 +37,7 @@ async function calculateTotalPrice(products, widgetElement,currency) {
           }
       });
       if (totalPriceText) {
-          totalPriceText.innerHTML = ` dsdsds ${currency + formattedTotalPrice}`;
+          totalPriceText.innerHTML = ` ${totalPriceText} : ${currency + formattedTotalPrice}`;
           return true;
       }
   }
@@ -142,7 +142,7 @@ async function checkboxTriggered(products, widgetElement,currency) {
   // Event listener for change events
   widgetElement.addEventListener("change", updateCheckedCount);
 }
-async function fbtTablePriceCalculator(products, widgetElement,currency) {
+async function fbtTablePriceCalculator(products, widgetElement,currency,totalPriceText) {
   let totalPrice = 0;
   let anyCheckboxChecked = false;
   if (widgetElement) {
@@ -176,7 +176,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency) {
               : "0.00";
           const totalPriceText = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
           if (totalPriceText)
-              totalPriceText.innerHTML = `<span class="sf-tot-price-text">{{ totalPrice }}</span><strong>${ currency + formattedTotalPrice}</strong>`;
+              totalPriceText.innerHTML = `${totalPriceText} : <strong>${ currency + formattedTotalPrice}</strong>`;
       }
   }
 }
@@ -229,12 +229,12 @@ async function fbtTableUtils(widgetElement,currency) {
         }
   }
 }
-function fbtProductView(products,currency) {
+function fbtProductView(products,currency,totalPriceText) {
 const productList = products
 const widgetElement = document.querySelector('.sf-container');
 calculateTotalPrice(productList, widgetElement,currency);
 checkboxTriggered(productList, widgetElement,currency)
 fbtTableUtils(widgetElement,currency);
-fbtTablePriceCalculator(productList, widgetElement,currency);
+fbtTablePriceCalculator(productList, widgetElement,currency,totalPriceText);
   
 }
