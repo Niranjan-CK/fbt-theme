@@ -225,12 +225,11 @@ async function fbtTableUtils(widgetElement,currency) {
           return;
       const productNameSpan = productListElement.querySelector(".sf-product-title");
       if (productNameSpan && !productNameSpan.innerHTML.includes('<strong>This item:</strong>')) {
-            productNameSpan.innerHTML = `<strong>This item:</strong> ${productNameSpan.innerHTML}`;
+            productNameSpan.innerHTML = `${productNameSpan.innerHTML}`;
         }
   }
 }
 function fbtProductView(products,currency,totalPriceText) {
-  console.log(totalPriceText,'ppppp')
 const productList = products
 const widgetElement = document.querySelector('.sf-container');
 calculateTotalPrice(productList, widgetElement,currency,totalPriceText);
