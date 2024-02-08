@@ -123,6 +123,13 @@ async function fbtTablePriceCalculator(products, widgetElement,currency) {
   if (widgetElement) {
       const productList = widgetElement.querySelector(`.sf-product-table`);
       console.log(productList,'list')
+    const priceContainers = productList.querySelectorAll('.sf-table-price-container');
+
+    // Loop through each price container element and add a '$' symbol to its content
+    priceContainers.forEach(container => {
+        // Get the current text content and append '$' to it
+        container.textContent = currency + container.textContent.trim();
+    });
       const checkboxes = productList === null || productList === void 0 ? void 0 : productList.querySelectorAll('input[type="checkbox"]');
       checkboxes === null || checkboxes === void 0 ? void 0 : checkboxes.forEach((checkbox) => {
           var _a, _b, _c, _d, _e, _f, _g, _h;
