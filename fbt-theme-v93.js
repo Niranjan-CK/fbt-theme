@@ -239,7 +239,8 @@ async function fbtTableUtils(widgetElement,currency) {
         }
   }
 }
-function fbtProductView(products,currency,totalPriceText) {
+function fbtProductView(products,currency,totalPriceText,discountValue) {
+console.log(discountValue)
 const productList = products
 const widgetElement = document.querySelector('.sf-container');
 calculateTotalPrice(productList, widgetElement,currency,totalPriceText);
