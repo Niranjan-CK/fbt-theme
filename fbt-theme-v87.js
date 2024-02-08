@@ -34,6 +34,13 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
             `;
                   }
               }
+            const thisItemValue = widgetElement.querySelectorAll('.sf-this-item');
+            console.log(thisItemValue,'sss')
+            if(thisItemValue){
+              for (var i = 1; i < thisItemValue.length; i++) {
+                thisItemValue[i].innerHTML = '';
+              }
+            }
           }
       });
       if (totalPriceTextValue) {
@@ -41,13 +48,6 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
           totalPriceTextValue.style = "margin-top:10px";
           return true;
       }
-    const thisItemValue = widgetElement.querySelectorAll('.sf-this-item');
-    console.log(thisItemValue,'sss')
-    if(thisItemValue){
-      for (var i = 1; i < thisItemValue.length; i++) {
-        thisItemValue[i].innerHTML = '';
-      }
-    }
   }
 }
 async function cartButtonText(widgetElement, checkboxCount) {
