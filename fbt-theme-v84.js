@@ -41,6 +41,13 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
           totalPriceTextValue.style = "margin-top:10px";
           return true;
       }
+    const thisItemValue = document.querySelectorAll('.sf-this-item');
+
+    if(thisItemValue){
+      for (var i = 1; i < thisItemValue.length; i++) {
+        items[i].innerHTML = '';
+      }
+    }
   }
 }
 async function cartButtonText(widgetElement, checkboxCount) {
