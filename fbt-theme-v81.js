@@ -36,7 +36,6 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               }
           }
       });
-    console.log(totalPriceText,'price total')
       if (totalPriceTextValue) {
           totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + formattedTotalPrice}`;
           totalPriceTextValue.style = "margin-top:10px";
@@ -225,7 +224,7 @@ async function fbtTableUtils(widgetElement,currency) {
           return;
       const productNameSpan = productListElement.querySelector(".sf-product-title");
       if (productNameSpan && productNameSpan.innerHTML.includes('<strong>This item:</strong>')) {
-            console.log("this item include')
+            console.log("this item include")
             productNameSpan.innerHTML = `${productNameSpan.innerHTML}`;
         }
   }
