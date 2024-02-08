@@ -161,6 +161,7 @@ async function firstItemPrice(products, widgetElement) {
   return undefined;
 }
 async function fbtTableVariant( mainProductId, selectedIndex, currencySymbol, products) {
+  console.log("rishal")
   const widgetElement = document.querySelector('.sf-container');
   const productListElement = widgetElement.querySelector("ul.sf-product-list");
   if (!productListElement)
