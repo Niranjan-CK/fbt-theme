@@ -124,10 +124,10 @@ async function fbtTablePriceCalculator(products, widgetElement,currency) {
       const productList = widgetElement.querySelector(`.sf-product-table`);
       console.log(productList,'list')
     const priceContainers = productList.querySelectorAll('.sf-table-price-container');
-
-    // Loop through each price container element and add a '$' symbol to its content
+    console.log(priceContainers,'priceContainers')
+    
     priceContainers.forEach(container => {
-        // Get the current text content and append '$' to it
+      console.log(container,'container')
         container.textContent = currency + container.textContent.trim();
     });
       const checkboxes = productList === null || productList === void 0 ? void 0 : productList.querySelectorAll('input[type="checkbox"]');
