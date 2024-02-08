@@ -103,9 +103,9 @@ async function checkboxTriggered(products, widgetElement,currency) {
               checkedCount++;
           }
       });
-        console.log(checkedCount,'dsd',checkboxes.length)
+        console.log(checkedCount,'dsd',checkboxes.length -1)
     
-      if(  checkedCount < checkboxes.length - 1)
+      if(  checkedCount < (checkboxes.length - 1))
       {
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
         for (let i = 0; i < discountTextElements.length; i++) {
