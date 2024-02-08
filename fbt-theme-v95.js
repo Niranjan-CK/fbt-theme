@@ -1,4 +1,4 @@
-async function calculateTotalPrice(products, widgetElement,currency,totalPriceText) {
+async function calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
   let totalPrice = 0;
   let anyCheckboxChecked = false;
   if (widgetElement) {
@@ -46,7 +46,13 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
           }
       });
       if (totalPriceTextValue) {
-          totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + formattedTotalPrice}`;
+          let discountAmount
+          if(discountType ==='percentage'){
+            discountAmount =( (formattedTotalPrice/100) * discountValue)
+          }else{
+            discountAmount = formattedTotalPrice - discountValue
+          }
+          totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + formattedTotalPrice} --- ${discountAmount}`;
           totalPriceTextValue.style = "margin-top:10px";
           return true;
       }
@@ -142,7 +148,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           addOnElement.innerHTML = `${checkedCount < 0 ? 0 : checkedCount} ${addOnText}`;
         
       }
-      calculateTotalPrice(products, widgetElement,currency,totalPriceText);
+      calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType);
       fbtTablePriceCalculator(products, widgetElement,currency);
       
   };
@@ -243,8 +249,8 @@ function fbtProductView(products,currency,totalPriceText,discountValue,discountT
 console.log(discountValue,discountType)
 const productList = products
 const widgetElement = document.querySelector('.sf-container');
-calculateTotalPrice(productList, widgetElement,currency,totalPriceText);
-checkboxTriggered(productList, widgetElement,currency,totalPriceText)
+calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
+checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType)
 fbtTableUtils(widgetElement,currency);
 fbtTablePriceCalculator(productList, widgetElement,currency,totalPriceText);
   
