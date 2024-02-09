@@ -258,4 +258,3 @@ checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountVal
 fbtTableUtils(widgetElement);
 fbtTablePriceCalculator(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
   
-}
