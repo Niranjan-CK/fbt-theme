@@ -212,7 +212,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
             discountAmount =( (formattedTotalPrice/100) * discountValue)
             finalAmount = formattedTotalPrice - discountAmount
             console.log(finalAmount,'percentage')
-          }else{
+          }else if(discountType ==='flat'){
             finalAmount = formattedTotalPrice - discountValue
             console.log(finalAmount,'flat')
           }
