@@ -193,7 +193,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
 }
 function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,type){
 if(type==='table'){
-  console.log(type,'-'discountValue)
+  console.log(type,'-',discountValue)
 }
   
   if (totalPriceTextValue) {
