@@ -47,14 +47,13 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
       });
       if (totalPriceTextValue) {
           let discountAmount
+          let finalAmount
           if(discountType ==='percentage'){
             discountAmount =( (formattedTotalPrice/100) * discountValue)
+            finalAmount = formattedTotalPrice - discountAmount
           }else{
-            discountAmount = formattedTotalPrice - discountValue
+            finalAmount = formattedTotalPrice - discountValue
           }
-          console.log(formattedTotalPrice,'-',discountAmount)
-          let finalAmount = formattedTotalPrice - discountAmount
-        console.log(finalAmount)
           var strikeSpan = document.createElement('span');
           strikeSpan.innerHTML = currency + formattedTotalPrice
           strikeSpan.style.textDecoration = 'line-through';
