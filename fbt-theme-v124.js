@@ -36,7 +36,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
                   }
               }
             const thisItemValue = widgetElement.querySelectorAll('.sf-this-item');
-            console.log(thisItemValue.textContent,'itemmememm')
+            console.log(thisItemValue,'itemmememm')
             thisItemValue.innerHTML = thisItemValue.textContent + ':'
             if(thisItemValue){
               for (var i = 1; i < thisItemValue.length; i++) {
