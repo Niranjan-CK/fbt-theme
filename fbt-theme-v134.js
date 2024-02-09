@@ -36,7 +36,6 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
                   }
               }
               const thisItemValue = widgetElement.querySelectorAll('.sf-this-item');
-            setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText)
             console.log(thisItemValue)
             if(thisItemValue[0]){
               console.log(thisItemValue[0].textContent,'itemmememm')
@@ -52,6 +51,8 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
                 }
               }
             }
+            setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText)
+
           }
       });
     
