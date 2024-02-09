@@ -211,8 +211,10 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           if(discountType ==='percentage'){
             discountAmount =( (formattedTotalPrice/100) * discountValue)
             finalAmount = formattedTotalPrice - discountAmount
+            console.log(finalAmount,'percentage')
           }else{
             finalAmount = formattedTotalPrice - discountValue
+            console.log(finalAmount,'flat')
           }
           var strikeSpan = document.createElement('span');
           strikeSpan.innerHTML = currency + formattedTotalPrice
@@ -220,7 +222,8 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
           
-          console.log(finalAmount)
+          console.log(finalAmount,'sss')
+          
           totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + finalAmount>0?finalAmount:0 }`;
           totalPriceTextValue.style = "margin-top:10px";
           totalPriceTextValue.appendChild(strikeSpan);
