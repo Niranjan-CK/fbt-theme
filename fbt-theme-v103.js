@@ -54,7 +54,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
           }
           let finalAmount = formattedTotalPrice - discountAmount
           var strikeSpan = document.createElement('span');
-          strikeSpan.innerHTML = formattedTotalPrice
+          strikeSpan.innerHTML = currency +' '+ formattedTotalPrice
           strikeSpan.style.textDecoration = 'line-through';
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
