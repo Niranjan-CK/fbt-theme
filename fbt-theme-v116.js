@@ -226,7 +226,8 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           
           console.log(finalAmount,'sss')
           
-          totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + finalAmount>0?finalAmount:0 }`;
+          totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount : 0}`;
+
           totalPriceTextValue.style = "margin-top:10px";
           totalPriceTextValue.appendChild(strikeSpan);
           return true;
