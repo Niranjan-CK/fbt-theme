@@ -193,6 +193,8 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
   }
 }
 function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText){
+
+  console.log(discountValue)
   if (totalPriceTextValue) {
           let discountAmount
           let finalAmount
@@ -202,6 +204,8 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           }else if(discountType ==='flat'){
             finalAmount = formattedTotalPrice - discountValue
           }
+  console.log(finalAmount)
+    
           var strikeSpan = document.createElement('span');
           strikeSpan.innerHTML = currency + formattedTotalPrice
           strikeSpan.style.textDecoration = 'line-through';
