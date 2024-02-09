@@ -147,8 +147,9 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         
       }
       calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType,);
+    // setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv,currency,totalPriceText)
     setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,checkedCount,(checkboxes.length - 1))
-      // fbtTablePriceCalculator(products, widgetElement,currency);
+      fbtTablePriceCalculator(products, widgetElement,currency);
       
   };
   updateCheckedCount();
@@ -187,11 +188,12 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
               ? totalPrice.toFixed(2)
               : "0.00";
           const totalPriceTextDiv = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
-          // setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv,currency,totalPriceText)
+          setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv,currency,totalPriceText)
       }
   }
 }
 function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,checkedCount,checkBoxLength){
+  console.log(checkBoxLength,checkedCount)
   if (totalPriceTextValue) {
           let discountAmount
           let finalAmount
