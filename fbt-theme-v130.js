@@ -205,7 +205,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           strikeSpan.style.textDecoration = 'line-through';
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
-    totalPriceTextValue.innerHTML = `<span style="font-size: 14px;">${totalPriceText}:</span> <strong>${currency}${finalAmount > 0 ? finalAmount : 0}</strong>`;
+    totalPriceTextValue.innerHTML = `<span style="font-size: 15px;">${totalPriceText}:</span> <strong>${currency}${finalAmount > 0 ? finalAmount : 0}</strong>`;
 
           // totalPriceTextValue.innerHTML = `${totalPriceText}: <strong>${currency}${finalAmount > 0 ? finalAmount : 0}</strong>`;
 
