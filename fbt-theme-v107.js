@@ -45,25 +45,26 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
             }
           }
       });
-      if (totalPriceTextValue) {
-          let discountAmount
-          let finalAmount
-          if(discountType ==='percentage'){
-            discountAmount =( (formattedTotalPrice/100) * discountValue)
-            finalAmount = formattedTotalPrice - discountAmount
-          }else{
-            finalAmount = formattedTotalPrice - discountValue
-          }
-          var strikeSpan = document.createElement('span');
-          strikeSpan.innerHTML = currency + formattedTotalPrice
-          strikeSpan.style.textDecoration = 'line-through';
-          strikeSpan.style.fontSize = '16px';
-          strikeSpan.style.marginLeft = '10px';
-          totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + finalAmount }`;
-          totalPriceTextValue.style = "margin-top:10px";
-          totalPriceTextValue.appendChild(strikeSpan);
-          return true;
-      }
+    setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue)
+      // if (totalPriceTextValue) {
+      //     let discountAmount
+      //     let finalAmount
+      //     if(discountType ==='percentage'){
+      //       discountAmount =( (formattedTotalPrice/100) * discountValue)
+      //       finalAmount = formattedTotalPrice - discountAmount
+      //     }else{
+      //       finalAmount = formattedTotalPrice - discountValue
+      //     }
+      //     var strikeSpan = document.createElement('span');
+      //     strikeSpan.innerHTML = currency + formattedTotalPrice
+      //     strikeSpan.style.textDecoration = 'line-through';
+      //     strikeSpan.style.fontSize = '16px';
+      //     strikeSpan.style.marginLeft = '10px';
+      //     totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + finalAmount }`;
+      //     totalPriceTextValue.style = "margin-top:10px";
+      //     totalPriceTextValue.appendChild(strikeSpan);
+      //     return true;
+      // }
   }
 }
 async function cartButtonText(widgetElement, checkboxCount) {
@@ -164,7 +165,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
   // Event listener for change events
   widgetElement.addEventListener("change", updateCheckedCount);
 }
-async function fbtTablePriceCalculator(products, widgetElement,currency,totalPriceText) {
+async function fbtTablePriceCalculator(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
   let totalPrice = 0;
   let anyCheckboxChecked = false;
   if (widgetElement) {
@@ -197,12 +198,33 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
               ? totalPrice.toFixed(2)
               : "0.00";
           const totalPriceTextDiv = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
-          if (totalPriceTextDiv)
-              totalPriceTextDiv.innerHTML = `${totalPriceText} : <strong>${ currency + formattedTotalPrice}</strong>`;
+          setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv)
+          // if (totalPriceTextDiv)
+          //     totalPriceTextDiv.innerHTML = `${totalPriceText} : <strong>${ currency + formattedTotalPrice}</strong>`;
       }
   }
 }
-
+function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue){
+  if (totalPriceTextValue) {
+          let discountAmount
+          let finalAmount
+          if(discountType ==='percentage'){
+            discountAmount =( (formattedTotalPrice/100) * discountValue)
+            finalAmount = formattedTotalPrice - discountAmount
+          }else{
+            finalAmount = formattedTotalPrice - discountValue
+          }
+          var strikeSpan = document.createElement('span');
+          strikeSpan.innerHTML = currency + formattedTotalPrice
+          strikeSpan.style.textDecoration = 'line-through';
+          strikeSpan.style.fontSize = '16px';
+          strikeSpan.style.marginLeft = '10px';
+          totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + finalAmount }`;
+          totalPriceTextValue.style = "margin-top:10px";
+          totalPriceTextValue.appendChild(strikeSpan);
+          return true;
+      }
+}
 
 async function firstItemPrice(products, widgetElement) {
   var _a, _b, _c, _d, _e, _f;
@@ -260,6 +282,6 @@ const widgetElement = document.querySelector('.sf-container');
 calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
 checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType)
 fbtTableUtils(widgetElement,currency);
-fbtTablePriceCalculator(productList, widgetElement,currency,totalPriceText);
+fbtTablePriceCalculator(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
   
 }
