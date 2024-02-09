@@ -36,10 +36,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
                   }
               }
               const thisItemValue = widgetElement.querySelectorAll('.sf-this-item');
-            console.log(thisItemValue)
             if(thisItemValue[0]){
-              console.log(thisItemValue[0].textContent,'itemmememm')
-              console.log(thisItemValue[0].textContent.includes(':'))
               if(!thisItemValue[0].textContent.includes(':')){
                 thisItemValue[0].innerHTML = thisItemValue[0].textContent + ':'
               }
@@ -156,6 +153,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
   widgetElement.addEventListener("change", updateCheckedCount);
 }
 async function fbtTablePriceCalculator(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
+  console.log(discountValue,'fi-2')
   let totalPrice = 0;
   let anyCheckboxChecked = false;
   if (widgetElement) {
@@ -188,6 +186,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
               ? totalPrice.toFixed(2)
               : "0.00";
           const totalPriceTextDiv = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
+        console.log(discountValue,'fi-3')
           setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv,currency,totalPriceText)
       }
   }
@@ -272,6 +271,7 @@ const widgetElement = document.querySelector('.sf-container');
 calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
 checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType)
 fbtTableUtils(widgetElement);
+  console.log(discountValue,'fi-1')
 fbtTablePriceCalculator(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
   
 }
