@@ -219,6 +219,8 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           strikeSpan.style.textDecoration = 'line-through';
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
+          
+          console.log(finalAmount)
           totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + finalAmount>0?finalAmount:0 }`;
           totalPriceTextValue.style = "margin-top:10px";
           totalPriceTextValue.appendChild(strikeSpan);
