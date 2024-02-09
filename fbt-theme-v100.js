@@ -53,8 +53,12 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
             discountAmount = formattedTotalPrice - discountValue
           }
           let finalAmount = formattedTotalPrice - discountAmount
-          totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + finalAmount } --- ${formattedTotalPrice}`;
+          var strikeSpan = widgetElement.createElement('span');
+          strikeSpan.innerHTML = formattedTotalPrice
+          strikeSpan.style.textDecoration = 'line-through';
+          totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + finalAmount }`;
           totalPriceTextValue.style = "margin-top:10px";
+          totalPriceTextValue.appendChild(strikeSpan);
           return true;
       }
   }
