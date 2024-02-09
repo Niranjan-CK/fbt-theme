@@ -36,9 +36,10 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
                   }
               }
               const thisItemValue = widgetElement.querySelectorAll('.sf-this-item');
-            if(thisItemValue){
+            if(thisItemValue[0].textContent){
               console.log(thisItemValue[0].textContent,'itemmememm')
-              thisItemValue[0].innerHTML = !thisItemValue[0].textContent.includes(':') && thisItemValue[0].textContent + ':'
+              console.log(thisItemValue[0].textContent.includes(':'))
+              thisItemValue[0].innerHTML = thisItemValue[0].textContent + ':'
               if(thisItemValue){
                 for (var i = 1; i < thisItemValue.length; i++) {
                   var parentElement = thisItemValue[i].parentNode;
