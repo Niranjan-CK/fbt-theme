@@ -16,9 +16,9 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               let price = (_d = (_c = (_b = product === null || product === void 0 ? void 0 : product.variants) === null || _b === void 0 ? void 0 : _b[selectedIndex]) === null || _c === void 0 ? void 0 : _c.variant_price) !== null && _d !== void 0 ? _d : (_f = (_e = product === null || product === void 0 ? void 0 : product.variants) === null || _e === void 0 ? void 0 : _e[0]) === null || _f === void 0 ? void 0 : _f.variant_price;
               
               if (price){
+                console.log( totalPrice,'total')
                 console.log(typeof totalPrice,'total')
                 totalPrice += price;
-                console.log( totalPrice,'total')
                 console.log(typeof price,'price')
                 console.log( price,'price')
               }
