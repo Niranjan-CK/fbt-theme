@@ -268,15 +268,12 @@ async function fbtTableUtils(widgetElement,currency) {
       if (!firstLiElement)
           return;
       const productNameSpan = productListElement.querySelector(".sf-name-variant-container");
-    console.log(productNameSpan)
       if (productNameSpan && productNameSpan.innerHTML.includes('<strong>This item:</strong>')) {
-            console.log("this item include")
             productNameSpan.innerHTML = `${productNameSpan.innerHTML}`;
         }
   }
 }
 function fbtProductView(products,currency,totalPriceText,discountValue,discountType) {
-console.log(discountValue,discountType)
 const productList = products
 const widgetElement = document.querySelector('.sf-container');
 calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
