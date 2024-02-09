@@ -52,7 +52,8 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
           }else{
             discountAmount = formattedTotalPrice - discountValue
           }
-          totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + formattedTotalPrice} --- ${discountAmount.toFixed(2)}`;
+          let finalAmount = formattedTotalPrice - discountAmount
+          totalPriceTextValue.innerHTML = totalPriceText + ': '+ `${currency + finalAmount } --- ${formattedTotalPrice.toFixed(2)}`;
           totalPriceTextValue.style = "margin-top:10px";
           return true;
       }
