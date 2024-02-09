@@ -20,6 +20,8 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
       const formattedTotalPrice = anyCheckboxChecked
           ? totalPrice.toFixed(2)
           : "0.00";
+
+    console.log(formattedTotalPrice,'sd')
       const totalPriceTextValue = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
       firstItemPrice(products, widgetElement).then((firstItemPr) => {
           if (widgetElement) {
