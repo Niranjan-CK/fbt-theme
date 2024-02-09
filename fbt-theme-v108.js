@@ -45,7 +45,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
             }
           }
       });
-    setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue)
+    setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency)
       // if (totalPriceTextValue) {
       //     let discountAmount
       //     let finalAmount
@@ -198,13 +198,13 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
               ? totalPrice.toFixed(2)
               : "0.00";
           const totalPriceTextDiv = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
-          setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv)
+          setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv,currency)
           // if (totalPriceTextDiv)
           //     totalPriceTextDiv.innerHTML = `${totalPriceText} : <strong>${ currency + formattedTotalPrice}</strong>`;
       }
   }
 }
-function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue){
+function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency){
   if (totalPriceTextValue) {
           let discountAmount
           let finalAmount
