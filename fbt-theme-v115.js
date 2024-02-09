@@ -209,6 +209,8 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           let discountAmount
           let finalAmount
           if(discountType ==='percentage'){
+            console.log(formattedTotalPrice,'percentage',discountValue)
+            
             discountAmount =( (formattedTotalPrice/100) * discountValue)
             finalAmount = formattedTotalPrice - discountAmount
             console.log(finalAmount,'percentage')
