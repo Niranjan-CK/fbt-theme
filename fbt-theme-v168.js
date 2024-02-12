@@ -203,7 +203,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
             finalAmount = formattedTotalPrice - discountValue
           }
           const checkOriginalPrice = document.querySelector(".sf-original-price")
-        if(!checkOriginalPrice){
+        if(checkOriginalPrice === null){
           console.log(checkOriginalPrice,'html')
           var strikeSpan = document.createElement('span');
           strikeSpan.innerHTML = currency + formattedTotalPrice
@@ -212,6 +212,8 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
         }
+          console.log(document.querySelector(".sf-original-price"),'docccc')
+    
           
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
 
