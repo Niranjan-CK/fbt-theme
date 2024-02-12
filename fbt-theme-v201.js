@@ -263,12 +263,13 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           strikeSpan = document.createElement('span');
           console.log(strikeSpan,'strikeSpan')
           strikeSpan.classList.add('sf-original-price-vs');
-          totalPriceTextValue.appendChild(strikeSpan);
+          
           strikeSpan.style.textDecoration = 'line-through';
           strikeSpan.innerHTML = currency + formattedTotalPrice
             
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
+    totalPriceTextValue.appendChild(strikeSpan);
         // }
           
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
