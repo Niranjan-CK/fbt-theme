@@ -112,7 +112,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
               checkedCount++;
           }
       });
-    const discountTotalPrice = widgetElement.getElementsByClassName('sf-original-price');
+    const discountTotalPrice = widgetElement.getElementsByClassName('sf-original-price-vs');
       if(  checkedCount < (checkboxes.length - 1))
       {
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
@@ -202,16 +202,14 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           }else if(discountType ==='flat'){
             finalAmount = formattedTotalPrice - discountValue
           }
-          const checkOriginalPrice = document.querySelector(".sf-original-price")
+          const checkOriginalPrice = document.querySelector(".sf-original-price-vs")
         let strikeSpan
         if(checkOriginalPrice === null){
           console.log(checkOriginalPrice,'html')
           strikeSpan = document.createElement('span');
           console.log(strikeSpan,'strikeSpan')
-          strikeSpan.classList.add('sf-original-price11');
+          strikeSpan.classList.add('sf-original-price-vs');
         }
-          const totalPriceStrike = document.querySelector(".sf-original-price")
-          console.log(totalPriceStrike,'totalPriceStrike')
           
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
 
