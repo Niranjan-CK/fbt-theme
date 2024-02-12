@@ -167,11 +167,12 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
               checkedCount++;
           }
       });
+    const discountTotalAmount = widgetElement.querySelector('sf-original-price-vs');
       if(  checkedCount < (checkboxes.length - 1))
       {
         discountApply = false
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
-        const discountTotalAmount = widgetElement.querySelector('sf-original-price-vs');
+        
         console.log(discountTotalAmount)
         
 
