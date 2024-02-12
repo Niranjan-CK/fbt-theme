@@ -58,7 +58,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
   }
 }
 
-export async function fbtDiscount(widgetElement, discount, formattedTotalPrice,currency) {
+ async function fbtDiscount(widgetElement, discount, formattedTotalPrice,currency) {
     const totalPriceText = widgetElement.querySelector(".sf-tot-price");
     let discountText = widgetElement.querySelector(`[data-tag="discount-text"]`);
     if (discountApply) {
