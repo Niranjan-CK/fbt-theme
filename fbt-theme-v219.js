@@ -218,7 +218,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
     strikeSpan.style.fontSize = '16px';
     strikeSpan.style.marginLeft = '10px';
     strikeSpan.classList.add('sf-original-price-vs');
-    totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
+    totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? parseFloat(finalAmount).toFixed(2) : 0}`;
     totalPriceTextValue.style = "margin-top:10px";
     totalPriceTextValue.appendChild(strikeSpan);
     return true;
