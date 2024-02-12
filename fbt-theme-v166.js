@@ -203,6 +203,8 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
             finalAmount = formattedTotalPrice - discountValue
           }
           console.log(document.querySelector(".sf-original-price"))
+          const checkOriginalPrice = document.querySelector(".sf-original-price")
+        if(!checkOriginalPrice){
           var strikeSpan = document.createElement('span');
           strikeSpan.innerHTML = currency + formattedTotalPrice
           strikeSpan.style.textDecoration = 'line-through';
@@ -213,6 +215,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
 
           totalPriceTextValue.style = "margin-top:10px";
           totalPriceTextValue.appendChild(strikeSpan);
+        }
           return true;
       }
 }
