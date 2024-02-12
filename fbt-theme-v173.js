@@ -210,18 +210,18 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           console.log(strikeSpan,'strikeSpan')
           strikeSpan.classList.add('sf-original-price');
         }
-          console.log(document.querySelector(".sf-original-price"),'docccc',strikeSpan)
-    
+          const totalPriceStrike = document.querySelector(".sf-original-price")
+          console.log(totalPriceStrike)
           
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
 
           totalPriceTextValue.style = "margin-top:10px";
-      if(strikeSpan){
-          strikeSpan.innerHTML = currency + formattedTotalPrice
+      if(totalPriceStrike){
+          totalPriceStrike.innerHTML = currency + formattedTotalPrice
           strikeSpan.style.textDecoration = 'line-through';
-          totalPriceTextValue.appendChild(strikeSpan);
-          strikeSpan.style.fontSize = '16px';
-          strikeSpan.style.marginLeft = '10px';
+          totalPriceTextValue.appendChild(totalPriceStrike);
+          totalPriceStrike.style.fontSize = '16px';
+          totalPriceStrike.style.marginLeft = '10px';
       }
           return true;
       }
