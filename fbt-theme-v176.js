@@ -225,43 +225,45 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
   //     }
   //         return true;
   //     }
-  if (totalPriceTextValue) {
-  let discountAmount;
-  let finalAmount;
+ if (totalPriceTextValue) {
+    let discountAmount;
+    let finalAmount;
 
-  if (discountType === 'percentage') {
-    discountAmount = (formattedTotalPrice / 100) * discountValue;
-    finalAmount = formattedTotalPrice - discountAmount;
-  } else if (discountType === 'flat') {
-    finalAmount = formattedTotalPrice - discountValue;
-  }
+    if (discountType === 'percentage') {
+        discountAmount = (formattedTotalPrice / 100) * discountValue;
+        finalAmount = formattedTotalPrice - discountAmount;
+    } else if (discountType === 'flat') {
+        finalAmount = formattedTotalPrice - discountValue;
+    }
 
-  const checkOriginalPrice = document.querySelector(".sf-original-price");
-  let strikeSpan;
+    // Check if the original price span exists, create it if not
+    const checkOriginalPrice = document.querySelector(".sf-original-price");
+    let strikeSpan;
 
-  if (checkOriginalPrice === null) {
-    console.log(checkOriginalPrice, 'html');
-    strikeSpan = document.createElement('span');
-    console.log(strikeSpan, 'strikeSpan');
-    strikeSpan.classList.add('sf-original-price');
-  }
+    if (checkOriginalPrice === null) {
+        strikeSpan = document.createElement('span');
+        strikeSpan.classList.add('sf-original-price');
+    }
 
-  const totalPriceStrike = document.querySelector(".sf-original-price");
-  console.log(totalPriceStrike, 'totalPriceStrike');
+    // Select the original price span again
+    const totalPriceStrike = document.querySelector(".sf-original-price");
 
-  totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
+    // Update the total price display with the final amount
+    totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
+    totalPriceTextValue.style.marginTop = "10px";
 
-  totalPriceTextValue.style.marginTop = "10px"; // Use style.marginTop instead of style
+    // If the original price span exists, update it with the formatted total price
+    if (totalPriceStrike) {
+        totalPriceStrike.innerHTML = currency + formattedTotalPrice;
+        strikeSpan.style.textDecoration = 'line-through';
+        totalPriceTextValue.appendChild(totalPriceStrike);
+        totalPriceStrike.style.fontSize = '16px';
+        totalPriceStrike.style.marginLeft = '10px';
+    }
 
-  if (totalPriceStrike) {
-    totalPriceStrike.innerHTML = currency + formattedTotalPrice;
-    totalPriceStrike.style.textDecoration = 'line-through'; // Corrected strikeSpan to totalPriceStrike
-    totalPriceTextValue.appendChild(totalPriceStrike);
-    totalPriceStrike.style.fontSize = '16px';
-    totalPriceStrike.style.marginLeft = '10px';
-  }
-  return true;
+    return true;
 }
+
 
 }
 
