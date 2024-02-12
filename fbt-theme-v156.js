@@ -155,6 +155,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
   widgetElement.addEventListener("change", updateCheckedCount);
 }
 async function fbtTablePriceCalculator(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
+  console.log(totalPriceText,'total')
   let totalPrice = 0;
   let anyCheckboxChecked = false;
   if (widgetElement) {
