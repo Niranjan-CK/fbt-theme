@@ -202,7 +202,8 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           }else if(discountType ==='flat'){
             finalAmount = formattedTotalPrice - discountValue
           }
-          const checkOriginalPrice = document.querySelector(".sf-original-price-vs")
+          const checkOriginalPrice = widgetElement.querySelector(".sf-original-price-vs")
+    console.log(checkOriginalPrice,'ssdd-->checkOriginalPrice')
         let strikeSpan
         if(checkOriginalPrice === null){
           console.log(checkOriginalPrice,'html')
