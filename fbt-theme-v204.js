@@ -171,10 +171,14 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       {
         discountApply = false
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
+        const discountTotalAmount = widgetElement.querySelector('sf-original-price-vs');
+        console.log(discountTotalAmount)
+        
 
         for (let i = 0; i < discountTextElements.length; i++) {
               discountTextElements[i].style.display = 'none';
           }
+              discountTotalAmount.style.display = 'none';
 
       }
         else if(checkedCount === -1){
@@ -194,6 +198,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         for (let i = 0; i < discountTextElements.length; i++) {
               discountTextElements[i].style.display = 'block';
           }
+              discountTotalAmount.style.display = 'none';
       }
       cartButtonText(widgetElement,checkedCount+1)
       const addOnElement = widgetElement.querySelector(".sf-add-on-product");
@@ -280,6 +285,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           strikeSpan.style.textDecoration = 'line-through';
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
+          strikeSpan.classList.add('sf-original-price-vs');
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount : 0}`;
 
           totalPriceTextValue.style = "margin-top:10px";
