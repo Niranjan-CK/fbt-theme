@@ -118,6 +118,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
         
         const discountTotalPrice = widgetElement.getElementsByClassName('sf-original-price');
+        console.log(discountTotalPrice,'dsdsds')
         for (let i = 0; i < discountTextElements.length; i++) {
               discountTextElements[i].style.display = 'none';
                discountTotalPrice[i].style.display = 'none';
