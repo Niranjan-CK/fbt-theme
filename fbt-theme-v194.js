@@ -257,7 +257,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           }
           const checkOriginalPrice = widgetElement.querySelector(".sf-original-price-vs")
         let strikeSpan
-        if(discountApply){
+        if(discountApply && formattedTotalPrice > 0){
           console.log(checkOriginalPrice,'html')
           strikeSpan = document.createElement('span');
           console.log(strikeSpan,'strikeSpan')
