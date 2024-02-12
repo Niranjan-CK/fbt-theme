@@ -202,24 +202,27 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           }else if(discountType ==='flat'){
             finalAmount = formattedTotalPrice - discountValue
           }
-          const checkOriginalPrice = document.querySelector(".sf-original-price")
+          const checkOriginalPrice = document.querySelector(".sf-original-price-vs")
         let strikeSpan
         if(checkOriginalPrice === null){
           console.log(checkOriginalPrice,'html')
           strikeSpan = document.createElement('span');
           console.log(strikeSpan,'strikeSpan')
           strikeSpan.classList.add('sf-original-price-vs');
+          totalPriceTextValue.appendChild(strikeSpan);
+          strikeSpan.style.textDecoration = 'line-through';
+         
+          strikeSpan.style.fontSize = '16px';
+          strikeSpan.style.marginLeft = '10px';
         }
           
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
-
+        const totalStrikeValue = document.querySelector(".sf-original-price-vs")
+    console.log(totalStrikeValue,'totalStrikeValue')
           totalPriceTextValue.style = "margin-top:10px";
-      if(strikeSpan){
-          strikeSpan.innerHTML = currency + formattedTotalPrice
-          strikeSpan.style.textDecoration = 'line-through';
-          totalPriceTextValue.appendChild(strikeSpan);
-          strikeSpan.style.fontSize = '16px';
-          strikeSpan.style.marginLeft = '10px';
+      if(totalStrikeValue){
+          totalStrikeValue.innerHTML = currency + formattedTotalPrice
+        console.log(totalStrikeValue,'if --->  totalStrikeValue')
       }
           return true;
       }
