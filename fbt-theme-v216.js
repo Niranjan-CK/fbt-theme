@@ -212,6 +212,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
       finalAmount = discountApply ? formattedTotalPrice - discountValue :formattedTotalPrice
     }
     var strikeSpan = document.createElement('span');
+    console.log(discountApply,'sds')
     strikeSpan.innerHTML = discountApply ? currency + formattedTotalPrice : ''
     strikeSpan.style.textDecoration = 'line-through';
     strikeSpan.style.fontSize = '16px';
