@@ -44,6 +44,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
             if(thisItemValue){
               for (var i = 1; i < thisItemValue.length; i++) {
                 var parentElement = thisItemValue[i].parentNode;
+                console.log(parentElement,'parentElement')
                   var item = thisItemValue[i];
                   item.parentNode.removeChild(item);
               }
