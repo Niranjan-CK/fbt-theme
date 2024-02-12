@@ -206,11 +206,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
         if(checkOriginalPrice === null){
           console.log(checkOriginalPrice,'html')
           var strikeSpan = document.createElement('span');
-          strikeSpan.innerHTML = currency + formattedTotalPrice
-          strikeSpan.style.textDecoration = 'line-through';
           strikeSpan.classList.add('sf-original-price');
-          strikeSpan.style.fontSize = '16px';
-          strikeSpan.style.marginLeft = '10px';
         }
           console.log(document.querySelector(".sf-original-price"),'docccc')
     
@@ -219,7 +215,11 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
 
           totalPriceTextValue.style = "margin-top:10px";
       if(strikeSpan){
+          strikeSpan.innerHTML = currency + formattedTotalPrice
+          strikeSpan.style.textDecoration = 'line-through';
           totalPriceTextValue.appendChild(strikeSpan);
+          strikeSpan.style.fontSize = '16px';
+          strikeSpan.style.marginLeft = '10px';
       }
           return true;
       }
