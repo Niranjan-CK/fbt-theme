@@ -217,11 +217,11 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
 
           totalPriceTextValue.style = "margin-top:10px";
       if(strikeSpan){
-          totalPriceStrike.innerHTML = currency + formattedTotalPrice
+          strikeSpan.innerHTML = currency + formattedTotalPrice
           strikeSpan.style.textDecoration = 'line-through';
-          totalPriceTextValue.appendChild(totalPriceStrike);
-          totalPriceStrike.style.fontSize = '16px';
-          totalPriceStrike.style.marginLeft = '10px';
+          totalPriceTextValue.appendChild(strikeSpan);
+          strikeSpan.style.fontSize = '16px';
+          strikeSpan.style.marginLeft = '10px';
       }
           return true;
       }
