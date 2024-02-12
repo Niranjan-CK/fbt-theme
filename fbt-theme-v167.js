@@ -202,20 +202,23 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           }else if(discountType ==='flat'){
             finalAmount = formattedTotalPrice - discountValue
           }
-          console.log(document.querySelector(".sf-original-price"))
           const checkOriginalPrice = document.querySelector(".sf-original-price")
         if(!checkOriginalPrice){
+          console.log(checkOriginalPrice,'html')
           var strikeSpan = document.createElement('span');
           strikeSpan.innerHTML = currency + formattedTotalPrice
           strikeSpan.style.textDecoration = 'line-through';
           strikeSpan.classList.add('sf-original-price');
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
+        }
+          
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
 
           totalPriceTextValue.style = "margin-top:10px";
+      if(strikeSpan){
           totalPriceTextValue.appendChild(strikeSpan);
-        }
+      }
           return true;
       }
 }
