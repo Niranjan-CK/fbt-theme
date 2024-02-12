@@ -167,7 +167,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
               checkedCount++;
           }
       });
-      if(  checkedCount < (checkboxes.length - 1))
+      if(  checkedCount < checkedCount)
       {
         discountApply = true
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
@@ -188,7 +188,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           
         }
       else{
-        console.log('--dsdsdsdsds-fff')
+        console.log(checkedCount,'--dsdsdsdsds-fff',checkedCount)
         discountApply = false
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
         for (let i = 0; i < discountTextElements.length; i++) {
