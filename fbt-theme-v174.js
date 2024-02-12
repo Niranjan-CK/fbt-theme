@@ -211,7 +211,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           strikeSpan.classList.add('sf-original-price');
         }
           const totalPriceStrike = document.querySelector(".sf-original-price")
-          console.log(totalPriceStrike)
+          console.log(totalPriceStrike,'totalPriceStrike')
           
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
 
