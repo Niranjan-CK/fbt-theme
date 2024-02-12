@@ -112,16 +112,16 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
               checkedCount++;
           }
       });
-    
+    const discountTotalPrice = widgetElement.getElementsByClassName('sf-original-price');
       if(  checkedCount < (checkboxes.length - 1))
       {
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
         
-        const discountTotalPrice = widgetElement.getElementsByClassName('sf-original-price');
+        
         console.log(discountTotalPrice,'dsdsds')
+        discountTotalPrice[0].style.display = 'none';
         for (let i = 0; i < discountTextElements.length; i++) {
               discountTextElements[i].style.display = 'none';
-               discountTotalPrice[i].style.display = 'none';
           }
 
       }
@@ -138,6 +138,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         for (let i = 0; i < discountTextElements.length; i++) {
               discountTextElements[i].style.display = 'block';
           }
+        discountTotalPrice[0].style.display = 'block';
       }
       cartButtonText(widgetElement,checkedCount+1)
       const addOnElement = widgetElement.querySelector(".sf-add-on-product");
