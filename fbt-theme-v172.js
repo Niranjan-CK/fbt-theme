@@ -207,9 +207,10 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
         if(checkOriginalPrice === null){
           console.log(checkOriginalPrice,'html')
           strikeSpan = document.createElement('span');
+          console.log(strikeSpan,'strikeSpan')
           strikeSpan.classList.add('sf-original-price');
         }
-          console.log(document.querySelector(".sf-original-price"),'docccc')
+          console.log(document.querySelector(".sf-original-price"),'docccc',strikeSpan)
     
           
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
