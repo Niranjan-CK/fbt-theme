@@ -203,9 +203,10 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
             finalAmount = formattedTotalPrice - discountValue
           }
           const checkOriginalPrice = document.querySelector(".sf-original-price")
+        let strikeSpan
         if(checkOriginalPrice === null){
           console.log(checkOriginalPrice,'html')
-          var strikeSpan = document.createElement('span');
+          strikeSpan = document.createElement('span');
           strikeSpan.classList.add('sf-original-price');
         }
           console.log(document.querySelector(".sf-original-price"),'docccc')
