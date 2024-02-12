@@ -193,38 +193,76 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
   }
 }
 function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText){
-  if (totalPriceTextValue) {
-          let discountAmount
-          let finalAmount
-          if(discountType ==='percentage'){
-            discountAmount =( (formattedTotalPrice/100) * discountValue)
-            finalAmount = formattedTotalPrice - discountAmount
-          }else if(discountType ==='flat'){
-            finalAmount = formattedTotalPrice - discountValue
-          }
-          const checkOriginalPrice = document.querySelector(".sf-original-price")
-        let strikeSpan
-        if(checkOriginalPrice === null){
-          console.log(checkOriginalPrice,'html')
-          strikeSpan = document.createElement('span');
-          console.log(strikeSpan,'strikeSpan')
-          strikeSpan.classList.add('sf-original-price');
-        }
-          const totalPriceStrike = document.querySelector(".sf-original-price")
-          console.log(totalPriceStrike,'totalPriceStrike')
+  // if (totalPriceTextValue) {
+  //         let discountAmount
+  //         let finalAmount
+  //         if(discountType ==='percentage'){
+  //           discountAmount =( (formattedTotalPrice/100) * discountValue)
+  //           finalAmount = formattedTotalPrice - discountAmount
+  //         }else if(discountType ==='flat'){
+  //           finalAmount = formattedTotalPrice - discountValue
+  //         }
+  //         const checkOriginalPrice = document.querySelector(".sf-original-price")
+  //       let strikeSpan
+  //       if(checkOriginalPrice === null){
+  //         console.log(checkOriginalPrice,'html')
+  //         strikeSpan = document.createElement('span');
+  //         console.log(strikeSpan,'strikeSpan')
+  //         strikeSpan.classList.add('sf-original-price');
+  //       }
+  //         const totalPriceStrike = document.querySelector(".sf-original-price")
+  //         console.log(totalPriceStrike,'totalPriceStrike')
           
-          totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
+  //         totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
 
-          totalPriceTextValue.style = "margin-top:10px";
-      if(totalPriceStrike){
-          totalPriceStrike.innerHTML = currency + formattedTotalPrice
-          strikeSpan.style.textDecoration = 'line-through';
-          totalPriceTextValue.appendChild(totalPriceStrike);
-          totalPriceStrike.style.fontSize = '16px';
-          totalPriceStrike.style.marginLeft = '10px';
-      }
-          return true;
-      }
+  //         totalPriceTextValue.style = "margin-top:10px";
+  //     if(totalPriceStrike){
+  //         totalPriceStrike.innerHTML = currency + formattedTotalPrice
+  //         strikeSpan.style.textDecoration = 'line-through';
+  //         totalPriceTextValue.appendChild(totalPriceStrike);
+  //         totalPriceStrike.style.fontSize = '16px';
+  //         totalPriceStrike.style.marginLeft = '10px';
+  //     }
+  //         return true;
+  //     }
+  if (totalPriceTextValue) {
+  let discountAmount;
+  let finalAmount;
+
+  if (discountType === 'percentage') {
+    discountAmount = (formattedTotalPrice / 100) * discountValue;
+    finalAmount = formattedTotalPrice - discountAmount;
+  } else if (discountType === 'flat') {
+    finalAmount = formattedTotalPrice - discountValue;
+  }
+
+  const checkOriginalPrice = document.querySelector(".sf-original-price");
+  let strikeSpan;
+
+  if (checkOriginalPrice === null) {
+    console.log(checkOriginalPrice, 'html');
+    strikeSpan = document.createElement('span');
+    console.log(strikeSpan, 'strikeSpan');
+    strikeSpan.classList.add('sf-original-price');
+  }
+
+  const totalPriceStrike = document.querySelector(".sf-original-price");
+  console.log(totalPriceStrike, 'totalPriceStrike');
+
+  totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
+
+  totalPriceTextValue.style.marginTop = "10px"; // Use style.marginTop instead of style
+
+  if (totalPriceStrike) {
+    totalPriceStrike.innerHTML = currency + formattedTotalPrice;
+    totalPriceStrike.style.textDecoration = 'line-through'; // Corrected strikeSpan to totalPriceStrike
+    totalPriceTextValue.appendChild(totalPriceStrike);
+    totalPriceStrike.style.fontSize = '16px';
+    totalPriceStrike.style.marginLeft = '10px';
+  }
+  return true;
+}
+
 }
 
 async function firstItemPrice(products, widgetElement) {
