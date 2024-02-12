@@ -208,7 +208,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           console.log(checkOriginalPrice,'html')
           strikeSpan = document.createElement('span');
           console.log(strikeSpan,'strikeSpan')
-          strikeSpan.classList.add('sf-original-price');
+          strikeSpan.classList.add('sf-original-price11');
         }
           const totalPriceStrike = document.querySelector(".sf-original-price")
           console.log(totalPriceStrike,'totalPriceStrike')
