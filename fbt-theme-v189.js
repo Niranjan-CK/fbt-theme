@@ -1,3 +1,4 @@
+let discountApply = true
 async function calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
   let totalPrice = 0;
   let anyCheckboxChecked = false;
@@ -168,6 +169,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
     const discountTotalPrice = widgetElement.getElementsByClassName('sf-original-price-vs');
       if(  checkedCount < (checkboxes.length - 1))
       {
+        discountApply = true
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
         
         
@@ -179,6 +181,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
 
       }
         else if(checkedCount === -1){
+          discountApply = false
           const addOnElement = widgetElement.querySelector(".sf-add-on-product-price");
       if (addOnElement) {
           addOnElement.innerHTML = currency + '0';
@@ -187,6 +190,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           
         }
       else{
+        discountApply = false
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
         for (let i = 0; i < discountTextElements.length; i++) {
               discountTextElements[i].style.display = 'block';
