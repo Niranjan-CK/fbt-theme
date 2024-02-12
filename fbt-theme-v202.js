@@ -257,23 +257,33 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           }else if(discountType ==='flat'){
             finalAmount = formattedTotalPrice - discountValue
           }
-        let strikeSpan
-    console.log('discountApply',discountApply)
-        // if(discountApply){
-          strikeSpan = document.createElement('span');
-          console.log(strikeSpan,'strikeSpan')
-          strikeSpan.classList.add('sf-original-price-vs');
+    //     let strikeSpan
+    // console.log('discountApply',discountApply)
+    //     // if(discountApply){
+    //       strikeSpan = document.createElement('span');
+    //       console.log(strikeSpan,'strikeSpan')
+    //       strikeSpan.classList.add('sf-original-price-vs');
           
-          strikeSpan.style.textDecoration = 'line-through';
-          strikeSpan.innerHTML = currency + formattedTotalPrice
+    //       strikeSpan.style.textDecoration = 'line-through';
+    //       strikeSpan.innerHTML = currency + formattedTotalPrice
             
+    //       strikeSpan.style.fontSize = '16px';
+    //       strikeSpan.style.marginLeft = '10px';
+    // totalPriceTextValue.appendChild(strikeSpan);
+    //     // }
+          
+    //       totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
+     
+    //       return true;
+     var strikeSpan = document.createElement('span');
+          strikeSpan.innerHTML = currency + formattedTotalPrice
+          strikeSpan.style.textDecoration = 'line-through';
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
-    totalPriceTextValue.appendChild(strikeSpan);
-        // }
-          
-          totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
-     
+          totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount : 0}`;
+
+          totalPriceTextValue.style = "margin-top:10px";
+          totalPriceTextValue.appendChild(strikeSpan);
           return true;
       }
 }
