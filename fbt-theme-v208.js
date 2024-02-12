@@ -291,7 +291,12 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
           strikeSpan.classList.add('sf-original-price-vs');
+    if(discountApply){
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount : 0}`;
+    }
+    else{
+      totalPriceTextValue.innerHTML = ' '
+    }
 
           totalPriceTextValue.style = "margin-top:10px";
           totalPriceTextValue.appendChild(strikeSpan);
