@@ -203,25 +203,25 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
 }
 function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,widgetElement){
   if (totalPriceTextValue) {
-          let discountAmount
-          let finalAmount
-          if(discountType ==='percentage'){
-            discountAmount =( (formattedTotalPrice/100) * discountValue)
-            finalAmount = discountApply ? formattedTotalPrice - discountAmount : formattedTotalPrice
-          }else if(discountType ==='flat'){
-            finalAmount = discountApply ? formattedTotalPrice - discountValue :formattedTotalPrice
-    
-     var strikeSpan = document.createElement('span');
-          strikeSpan.innerHTML = discountApply ? currency + formattedTotalPrice : ''
-          strikeSpan.style.textDecoration = 'line-through';
-          strikeSpan.style.fontSize = '16px';
-          strikeSpan.style.marginLeft = '10px';
-          strikeSpan.classList.add('sf-original-price-vs');
-          totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount : 0}`;
-          totalPriceTextValue.style = "margin-top:10px";
-          totalPriceTextValue.appendChild(strikeSpan);
-          return true;
-      }
+    let discountAmount
+    let finalAmount
+    if(discountType ==='percentage'){
+      discountAmount =( (formattedTotalPrice/100) * discountValue)
+      finalAmount = discountApply ? formattedTotalPrice - discountAmount : formattedTotalPrice
+    }else if(discountType ==='flat'){
+      finalAmount = discountApply ? formattedTotalPrice - discountValue :formattedTotalPrice
+    }
+    var strikeSpan = document.createElement('span');
+    strikeSpan.innerHTML = discountApply ? currency + formattedTotalPrice : ''
+    strikeSpan.style.textDecoration = 'line-through';
+    strikeSpan.style.fontSize = '16px';
+    strikeSpan.style.marginLeft = '10px';
+    strikeSpan.classList.add('sf-original-price-vs');
+    totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount : 0}`;
+    totalPriceTextValue.style = "margin-top:10px";
+    totalPriceTextValue.appendChild(strikeSpan);
+    return true;
+  }
 }
 
 async function firstItemPrice(products, widgetElement) {
