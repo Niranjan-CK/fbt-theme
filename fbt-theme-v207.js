@@ -284,6 +284,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
     //       totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
      
     //       return true;
+    console.log(discountApply,'tueeeeee')
      var strikeSpan = document.createElement('span');
           strikeSpan.innerHTML = currency + formattedTotalPrice
           strikeSpan.style.textDecoration = 'line-through';
