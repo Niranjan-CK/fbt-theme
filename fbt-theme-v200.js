@@ -257,11 +257,9 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           }else if(discountType ==='flat'){
             finalAmount = formattedTotalPrice - discountValue
           }
-          const checkOriginalPrice = widgetElement.querySelector(".sf-original-price-vs")
         let strikeSpan
     console.log('discountApply',discountApply)
-        if(discountApply){
-          console.log(checkOriginalPrice,'html')
+        // if(discountApply){
           strikeSpan = document.createElement('span');
           console.log(strikeSpan,'strikeSpan')
           strikeSpan.classList.add('sf-original-price-vs');
@@ -271,7 +269,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
             
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
-        }
+        // }
           
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
      
