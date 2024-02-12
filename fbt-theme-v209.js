@@ -286,17 +286,18 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
     //       return true;
     console.log(discountApply,'tueeeeee')
      var strikeSpan = document.createElement('span');
-          strikeSpan.innerHTML = currency + formattedTotalPrice
+          if(discountApply){
+                strikeSpan.innerHTML = currency + formattedTotalPrice
+          }  else{
+            strikeSpan.innerHTML = ' '
+          }
           strikeSpan.style.textDecoration = 'line-through';
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
           strikeSpan.classList.add('sf-original-price-vs');
-    if(discountApply){
+    
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount : 0}`;
-    }
-    else{
-      totalPriceTextValue.innerHTML = ' '
-    }
+   
 
           totalPriceTextValue.style = "margin-top:10px";
           totalPriceTextValue.appendChild(strikeSpan);
