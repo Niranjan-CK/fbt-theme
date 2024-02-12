@@ -148,7 +148,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         
       }
       calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType);
-      fbtTablePriceCalculator(products, widgetElement,currency);
+      fbtTablePriceCalculator(products, widgetElement,currency,totalPriceText);
       
   };
   updateCheckedCount();
