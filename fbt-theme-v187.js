@@ -49,9 +49,62 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
             }
           }
       });
-    setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,widgetElement)
+    const discount = {
+      type:discountType,
+      value:discountValue
+    }
+    // setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,widgetElement)
+    fbtDiscount(widgetElement, discount, formattedTotalPrice,currency)
   }
 }
+
+export async function fbtDiscount(widgetElement, discount, formattedTotalPrice,currency) {
+    const totalPriceText = widgetElement.querySelector(".sf-tot-price");
+    let discountText = widgetElement.querySelector(`[data-tag="discount-text"]`);
+    if (discountApply) {
+        const discountType = discount.type;
+        const discountValue = discount.value;
+        if (discountValue == 0) {
+            discountText.remove();
+            if (totalPriceText)
+                totalPriceText.innerHTML = `${": " + currency + formattedTotalPrice}`;
+            return;
+        }
+        let discountedPrice = applyDiscount(totalPrice, discountType, discountValue);
+        if (discountedPrice < 0)
+            discountedPrice = 0;
+        if (totalPriceText) {
+            totalPriceText.innerHTML = `<strong>${": " + currency + discountedPrice.toFixed(2)}</strong><del class="sf-original-price">${currency + formattedTotalPrice}</del>`;
+        }
+        if (discountText &&
+            (discountText.textContent.includes("{discount}") || discountTextChanged)) {
+            discountTextChanged = true;
+            const discountValueText = discountType === "flat"
+                ? `${currency}${discountValue}`
+                : `${discountValue}%`;
+            discountText.innerHTML = discountText.textContent.replace("{discount}", discountValueText);
+            discountText.style.display = "block";
+        }
+    }
+    else {
+        if (totalPriceText)
+            totalPriceText.innerHTML = `<strong>${": " + currency + formattedTotalPrice}</strong>`;
+        if (discountText)
+            discountText.style.display = "none";
+    }
+    function applyDiscount(totalPrice, discountType, discountValue) {
+        switch (discountType) {
+            case "flat":
+                return totalPrice - discountValue;
+            case "percentage":
+                const discountedPrice = totalPrice * (1 - discountValue / 100);
+                return discountedPrice;
+            default:
+                return totalPrice;
+        }
+    }
+}
+
 async function cartButtonText(widgetElement, checkboxCount) {
   const multiCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-multi-cart");
   const twoCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-two-cart");
@@ -188,7 +241,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
               ? totalPrice.toFixed(2)
               : "0.00";
           const totalPriceTextDiv = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
-          setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv,currency,totalPriceText,widgetElement)
+          // setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv,currency,totalPriceText,widgetElement)
       }
   }
 }
