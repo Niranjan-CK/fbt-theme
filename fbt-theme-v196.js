@@ -178,6 +178,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
 
       }
         else if(checkedCount === -1){
+          console.log('---fff')
           discountApply = false
           const addOnElement = widgetElement.querySelector(".sf-add-on-product-price");
       if (addOnElement) {
@@ -187,6 +188,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           
         }
       else{
+        console.log('--dsdsdsdsds-fff')
         discountApply = false
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
         for (let i = 0; i < discountTextElements.length; i++) {
