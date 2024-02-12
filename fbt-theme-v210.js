@@ -262,9 +262,9 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           let finalAmount
           if(discountType ==='percentage'){
             discountAmount =( (formattedTotalPrice/100) * discountValue)
-            finalAmount = formattedTotalPrice - discountAmount
+            finalAmount = discountApply ? formattedTotalPrice - discountAmount : formattedTotalPrice
           }else if(discountType ==='flat'){
-            finalAmount = formattedTotalPrice - discountValue
+            finalAmount = discountApply ? formattedTotalPrice - discountValue :formattedTotalPrice
           }
     //     let strikeSpan
     // console.log('discountApply',discountApply)
