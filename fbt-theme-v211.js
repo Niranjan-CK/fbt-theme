@@ -1,5 +1,4 @@
 let discountApply = true
-let discountTextChanged = false
 async function calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
   let totalPrice = 0;
   let anyCheckboxChecked = false;
@@ -56,56 +55,9 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
       value:discountValue
     }
     setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,widgetElement)
-    // fbtDiscount(widgetElement, discount, formattedTotalPrice,currency)
   }
 }
 
- async function fbtDiscount(widgetElement, discount, formattedTotalPrice,currency) {
-    const totalPriceText = widgetElement.querySelector(".sf-tot-price");
-    let discountText = widgetElement.querySelector(`[data-tag="discount-text"]`);
-    if (discountApply) {
-        const discountType = discount.type;
-        const discountValue = discount.value;
-        if (discountValue == 0) {
-            discountText.remove();
-            if (totalPriceText)
-                totalPriceText.innerHTML = `${": " + currency + formattedTotalPrice}`;
-            return;
-        }
-        let discountedPrice = applyDiscount(formattedTotalPrice, discountType, discountValue);
-        if (discountedPrice < 0)
-            discountedPrice = 0;
-        if (totalPriceText) {
-            totalPriceText.innerHTML = `<strong>${": " + currency + discountedPrice.toFixed(2)}</strong><del class="sf-original-price">${currency + formattedTotalPrice}</del>`;
-        }
-        if (discountText &&
-            (discountText.textContent.includes("{discount}") || discountTextChanged)) {
-            discountTextChanged = true;
-            const discountValueText = discountType === "flat"
-                ? `${currency}${discountValue}`
-                : `${discountValue}%`;
-            discountText.innerHTML = discountText.textContent.replace("{discount}", discountValueText);
-            discountText.style.display = "block";
-        }
-    }
-    else {
-        if (totalPriceText)
-            totalPriceText.innerHTML = `<strong>${": " + currency + formattedTotalPrice}</strong>`;
-        if (discountText)
-            discountText.style.display = "none";
-    }
-    function applyDiscount(totalPrice, discountType, discountValue) {
-        switch (discountType) {
-            case "flat":
-                return totalPrice - discountValue;
-            case "percentage":
-                const discountedPrice = totalPrice * (1 - discountValue / 100);
-                return discountedPrice;
-            default:
-                return totalPrice;
-        }
-    }
-}
 
 async function cartButtonText(widgetElement, checkboxCount) {
   const multiCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-multi-cart");
@@ -172,18 +124,13 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       {
         discountApply = false
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
-        
-        console.log(discountTotalAmount)
-        
 
         for (let i = 0; i < discountTextElements.length; i++) {
               discountTextElements[i].style.display = 'none';
           }
-              // discountTotalAmount.style.display = 'none';
 
       }
         else if(checkedCount === -1){
-          console.log('---fff')
           discountApply = false
           const addOnElement = widgetElement.querySelector(".sf-add-on-product-price");
       if (addOnElement) {
@@ -193,13 +140,11 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           
         }
       else{
-        console.log(checkedCount,'--dsdsdsdsds-fff',(checkboxes.length - 1))
         discountApply = true
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
         for (let i = 0; i < discountTextElements.length; i++) {
               discountTextElements[i].style.display = 'block';
           }
-        console.log(discountTotalAmount)
         if(discountTotalAmount){
               discountTotalAmount.style.display = 'block';
         }
@@ -265,40 +210,14 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
             finalAmount = discountApply ? formattedTotalPrice - discountAmount : formattedTotalPrice
           }else if(discountType ==='flat'){
             finalAmount = discountApply ? formattedTotalPrice - discountValue :formattedTotalPrice
-          }
-    //     let strikeSpan
-    // console.log('discountApply',discountApply)
-    //     // if(discountApply){
-    //       strikeSpan = document.createElement('span');
-    //       console.log(strikeSpan,'strikeSpan')
-    //       strikeSpan.classList.add('sf-original-price-vs');
-          
-    //       strikeSpan.style.textDecoration = 'line-through';
-    //       strikeSpan.innerHTML = currency + formattedTotalPrice
-            
-    //       strikeSpan.style.fontSize = '16px';
-    //       strikeSpan.style.marginLeft = '10px';
-    // totalPriceTextValue.appendChild(strikeSpan);
-    //     // }
-          
-    //       totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
-     
-    //       return true;
-    console.log(discountApply,'tueeeeee')
+    
      var strikeSpan = document.createElement('span');
-          if(discountApply){
-                strikeSpan.innerHTML = currency + formattedTotalPrice
-          }  else{
-            strikeSpan.innerHTML = ' '
-          }
+          strikeSpan.innerHTML = discountApply ? currency + formattedTotalPrice : ''
           strikeSpan.style.textDecoration = 'line-through';
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
           strikeSpan.classList.add('sf-original-price-vs');
-    
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount : 0}`;
-   
-
           totalPriceTextValue.style = "margin-top:10px";
           totalPriceTextValue.appendChild(strikeSpan);
           return true;
