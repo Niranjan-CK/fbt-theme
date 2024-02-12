@@ -202,7 +202,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           }else if(discountType ==='flat'){
             finalAmount = formattedTotalPrice - discountValue
           }
-          const checkOriginalPrice = document.querySelector(".sf-original-price-vs")
+          const checkOriginalPrice = document.querySelector(".sf-original-price")
         let strikeSpan
         if(checkOriginalPrice === null){
           console.log(checkOriginalPrice,'html')
@@ -218,6 +218,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
           strikeSpan.innerHTML = currency + formattedTotalPrice
           strikeSpan.style.textDecoration = 'line-through';
           totalPriceTextValue.appendChild(strikeSpan);
+        console.log(
           strikeSpan.style.fontSize = '16px';
           strikeSpan.style.marginLeft = '10px';
       }
