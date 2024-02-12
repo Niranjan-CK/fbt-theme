@@ -167,7 +167,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
               checkedCount++;
           }
       });
-      if(  checkedCount < checkedCount)
+      if(  checkedCount <= checkedCount)
       {
         discountApply = true
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
