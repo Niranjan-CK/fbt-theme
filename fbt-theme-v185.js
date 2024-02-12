@@ -49,7 +49,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
             }
           }
       });
-    setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText)
+    setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,widgetElement)
   }
 }
 async function cartButtonText(widgetElement, checkboxCount) {
@@ -188,11 +188,11 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
               ? totalPrice.toFixed(2)
               : "0.00";
           const totalPriceTextDiv = widgetElement.querySelector('.sf-total-price[data-tag="total-price"]');
-          setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv,currency,totalPriceText)
+          setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextDiv,currency,totalPriceText,widgetElement)
       }
   }
 }
-function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText){
+function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,widgetElement){
   if (totalPriceTextValue) {
           let discountAmount
           let finalAmount
@@ -217,7 +217,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
         }
           
           totalPriceTextValue.innerHTML = `${totalPriceText}: ${currency}${finalAmount > 0 ? finalAmount.toFixed(2) : 0}`;
-        const totalStrikeValue = document.querySelector(".sf-original-price-vs")
+        const totalStrikeValue = widgetElement.querySelector(".sf-original-price-vs")
     console.log(totalStrikeValue,'totalStrikeValue')
           totalPriceTextValue.style = "margin-top:10px";
       if(totalStrikeValue){
@@ -226,9 +226,6 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
       }
           return true;
       }
- 
-
-
 }
 
 async function firstItemPrice(products, widgetElement) {
