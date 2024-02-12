@@ -71,7 +71,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
                 totalPriceText.innerHTML = `${": " + currency + formattedTotalPrice}`;
             return;
         }
-        let discountedPrice = applyDiscount(totalPrice, discountType, discountValue);
+        let discountedPrice = applyDiscount(formattedTotalPrice, discountType, discountValue);
         if (discountedPrice < 0)
             discountedPrice = 0;
         if (totalPriceText) {
@@ -166,15 +166,11 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
               checkedCount++;
           }
       });
-    const discountTotalPrice = widgetElement.getElementsByClassName('sf-original-price-vs');
       if(  checkedCount < (checkboxes.length - 1))
       {
         discountApply = true
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
-        
-        
-        console.log(discountTotalPrice,'elementssssss')
-        discountTotalPrice[0].style.display = 'none';
+
         for (let i = 0; i < discountTextElements.length; i++) {
               discountTextElements[i].style.display = 'none';
           }
@@ -195,7 +191,6 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         for (let i = 0; i < discountTextElements.length; i++) {
               discountTextElements[i].style.display = 'block';
           }
-        discountTotalPrice[0].style.display = 'block';
       }
       cartButtonText(widgetElement,checkedCount+1)
       const addOnElement = widgetElement.querySelector(".sf-add-on-product");
