@@ -37,8 +37,6 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               }
               if (addOnPrice) {
                 const firstElement = widgetElement.querySelector(".sf-product-checkbox");
-            console.log(firstElement.checked,'firstElement')
-                console.log(firstItemPr,'firstItemPr',totalPrice)
                   if (firstItemPr !== undefined ) {
                       const priceValue = (addOnTotalPrice).toFixed(2)
                       addOnPrice.innerHTML = `${currency}  ${ priceValue > 0 ? priceValue : 0}
