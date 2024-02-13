@@ -93,10 +93,14 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         console.log(productItem,'productItem')
           if (!productItem)
               return;
-    //     const productImage = tableElement ? 
-    // widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`) :
-    // productItem.querySelector(".sf-product-image");
-        const productImage = productItem.querySelector(".sf-product-image");
+        let productId 
+        if(tableElement && !checkbox.checked){
+          productId = checkbox.id
+        }
+        const productImage = tableElement ? 
+    widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`) :
+    productItem.querySelector(".sf-product-image");
+        // const productImage = productItem.querySelector(".sf-product-image");
   console.log(productImage,'productImage')
         
           const productDropdown = productItem.querySelector(".sf-product-variants-dropdown");
