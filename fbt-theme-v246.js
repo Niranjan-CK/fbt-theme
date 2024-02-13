@@ -89,19 +89,12 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       let checkedCount = -1;
       checkboxes.forEach((checkbox) => {
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
-        console.log(checkbox,'checkbox')
-        console.log(productItem,'productItem')
           if (!productItem)
               return;
-        let productId 
-        if(tableElement && !checkbox.checked){
-          productId = checkbox.id
-        }
+        const productId = checkbox.id
         const productImage = tableElement ? 
     widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`) :
     productItem.querySelector(".sf-product-image");
-        // const productImage = productItem.querySelector(".sf-product-image");
-  console.log(productImage,'productImage')
         
           const productDropdown = productItem.querySelector(".sf-product-variants-dropdown");
           const productTitle = productItem.querySelector(".sf-product-title");
