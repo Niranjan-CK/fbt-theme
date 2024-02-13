@@ -82,7 +82,7 @@ async function cartButtonText(widgetElement, checkboxCount) {
   }
 }
 
-async function checkboxTriggered(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
+async function checkboxTriggered(products, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement) {
   // Function to calculate the number of checked products
   const updateCheckedCount = () => {
       const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
@@ -91,8 +91,6 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
           if (!productItem)
               return;
-         const tableElement = widgetElement.querySelector(".sf-table");
-        console.log(tableElement,'tableElement')
         const productImage = tableElement ? 
     widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`) :
     productItem.querySelector(".sf-product-image");
@@ -278,11 +276,10 @@ async function fbtTableUtils(widgetElement) {
 }
 function fbtProductView(products,currency,totalPriceText,discountValue,discountType) {
 const productList = products  
-const widgetElement = document.querySelector('.sf-table') ?? document.querySelector('.sf-container');
-  console.log(document.querySelector('.sf-table'))
-  console.log(widgetElement)
+const widgetElement = document.querySelector('.sf-container');
+const tableElement = document.querySelector('.sf-table') 
 calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
-checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType)
+checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement)
 fbtTableUtils(widgetElement);
 fbtTablePriceCalculator(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
   
