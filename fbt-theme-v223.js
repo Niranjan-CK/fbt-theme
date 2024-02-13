@@ -215,7 +215,7 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
     console.log(discountApply,'discountApply')
     console.log(discountValue,'discountValue')
     
-    strikeSpan.innerHTML = currency + formattedTotalPrice 
+    strikeSpan.innerHTML = (Number(discountValue)>0 &&  discountApply) ? currency + formattedTotalPrice : ''
     strikeSpan.style.textDecoration = 'line-through';
     strikeSpan.style.fontSize = '16px';
     strikeSpan.style.marginLeft = '10px';
