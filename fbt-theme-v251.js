@@ -31,7 +31,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
                   thisPrice.innerHTML = `${currency}  ${firstItemPr}`;
               }
               if (addOnPrice) {
-                console.log(firstItemPr,'firstItemPr')
+                console.log(firstItemPr,'firstItemPr',totalPrice)
                   if (firstItemPr !== undefined ) {
                       const priceValue = (totalPrice - firstItemPr).toFixed(2)
                       addOnPrice.innerHTML = `${currency}  ${ priceValue > 0 ? priceValue : 0}
