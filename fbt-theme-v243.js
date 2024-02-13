@@ -89,6 +89,8 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       let checkedCount = -1;
       checkboxes.forEach((checkbox) => {
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
+        console.log(checkbox,'checkbox')
+        console.log(productItem,'productItem')
           if (!productItem)
               return;
         const productImage = tableElement ? 
