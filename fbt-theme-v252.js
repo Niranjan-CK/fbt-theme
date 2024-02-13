@@ -4,7 +4,8 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
   let anyCheckboxChecked = false;
   if (widgetElement) {
       const productList = widgetElement.querySelectorAll(`.sf-product-item`);
-      productList.forEach((productItem) => {
+    let addOnTotalPrice = 0
+      productList.forEach((productItem,index) => {
           var _a, _b, _c, _d, _e, _f;
           const checkbox = productItem.querySelector('input[type="checkbox"]');
           if (checkbox && checkbox.checked) {
@@ -16,6 +17,10 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               let price = product?.price
               if (price){
                 totalPrice += price;
+                if(index > 0)
+                {
+                  addOnTotalPrice += price
+                }
               }            
           }
       });
@@ -31,9 +36,11 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
                   thisPrice.innerHTML = `${currency}  ${firstItemPr}`;
               }
               if (addOnPrice) {
+                const firstElement = widgetElement.querySelector(".sf-product-checkbox");
+            console.log(firstElement.checked,'firstElement')
                 console.log(firstItemPr,'firstItemPr',totalPrice)
                   if (firstItemPr !== undefined ) {
-                      const priceValue = (totalPrice - firstItemPr).toFixed(2)
+                      const priceValue = (addOnTotalPrice).toFixed(2)
                       addOnPrice.innerHTML = `${currency}  ${ priceValue > 0 ? priceValue : 0}
             `;
                   }
