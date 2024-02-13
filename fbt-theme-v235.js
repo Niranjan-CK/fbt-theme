@@ -1,11 +1,9 @@
 let discountApply = true
 async function calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
-  console.log("calculateTotalPrice")
   let totalPrice = 0;
   let anyCheckboxChecked = false;
   if (widgetElement) {
       const productList = widgetElement.querySelectorAll(`.sf-product-item`);
-    console.log(productList,'productList')
       productList.forEach((productItem) => {
           var _a, _b, _c, _d, _e, _f;
           const checkbox = productItem.querySelector('input[type="checkbox"]');
@@ -207,8 +205,6 @@ function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPrice
       finalAmount = discountApply ? formattedTotalPrice - discountValue :formattedTotalPrice
     }
     var strikeSpan = document.createElement('span');
-    console.log(discountApply,'discountApply')
-    console.log(discountValue,'discountValue')
     
     strikeSpan.innerHTML = (Number(discountValue)>0 &&  discountApply) ? currency + formattedTotalPrice : ''
     strikeSpan.style.textDecoration = 'line-through';
