@@ -17,6 +17,11 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
             
               anyCheckboxChecked = true;
               let productRef = products;
+              console.log('------------------------')
+            
+              console.log(products)
+              console.log('------------------------')
+            
               let productId = productItem.getAttribute("data-product-id");
               let product = productRef.find((product) => Number(product.id) === Number(productId));
               let selectedIndex = (_a = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _a === void 0 ? void 0 : _a.selectedIndex;
