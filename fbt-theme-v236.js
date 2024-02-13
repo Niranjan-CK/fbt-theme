@@ -95,6 +95,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           const productDropdown = productItem.querySelector(".sf-product-variants-dropdown");
           const productTitle = productItem.querySelector(".sf-product-title");
           const productPrice = productItem.querySelector(".sf-price-container");
+          const thisItem = productItem.querySelector(".sf-this-item")
           const checkboxInput = checkbox;
           if (productImage) {
               productImage.style.opacity = checkboxInput.checked ? "1" : "0.5";
@@ -111,6 +112,12 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           if (checkboxInput.checked) {
               checkedCount++;
           }
+          if (thisItem)
+          {
+              thisItem.style.opacity = checkboxInput.checked ? "1" : "0.5";
+          }
+        
+        
       });
     const discountTotalAmount = widgetElement.querySelector('sf-original-price-vs');
       if(  checkedCount < (checkboxes.length - 1))
