@@ -56,6 +56,7 @@ async function cartButtonText(widgetElement, checkboxCount) {
   const multiCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-multi-cart");
   const twoCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-two-cart");
   const singleCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-single-cart");
+  
   if (checkboxCount === 2) {
       if (twoCartElement)
           twoCartElement.style.display = "block";
@@ -86,6 +87,8 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
   // Function to calculate the number of checked products
   const updateCheckedCount = () => {
       const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
+      const firstElement = widgetElement.querySelector(".sf-product-checkbox");
+    console.log(firstElement,'firstElement')
       let checkedCount = -1;
       checkboxes.forEach((checkbox) => {
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
