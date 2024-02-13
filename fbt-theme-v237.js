@@ -91,7 +91,11 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
           if (!productItem)
               return;
-          const productImage = productItem.querySelector(".sf-product-image");
+         const tableElement = widgetElement.querySelector(".sf-table");
+     
+        const productImage = tableElement ? (widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`)
+        : (productItem.querySelector(".sf-product-image") 
+        
           const productDropdown = productItem.querySelector(".sf-product-variants-dropdown");
           const productTitle = productItem.querySelector(".sf-product-title");
           const productPrice = productItem.querySelector(".sf-price-container");
