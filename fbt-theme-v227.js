@@ -5,6 +5,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
   let anyCheckboxChecked = false;
   if (widgetElement) {
       const productList = widgetElement.querySelectorAll(`.sf-product-item`);
+    console.log(productList,'productList')
       productList.forEach((productItem) => {
           var _a, _b, _c, _d, _e, _f;
           const checkbox = productItem.querySelector('input[type="checkbox"]');
