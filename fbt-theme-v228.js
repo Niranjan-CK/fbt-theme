@@ -9,7 +9,12 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
       productList.forEach((productItem) => {
           var _a, _b, _c, _d, _e, _f;
           const checkbox = productItem.querySelector('input[type="checkbox"]');
+        console.log(productItem,'productItem')
+        console.log(checkbox,'checkbox',checkbox.checked)
+        
           if (checkbox && checkbox.checked) {
+        console.log('trigger checkbox')
+            
               anyCheckboxChecked = true;
               let productRef = products;
               let productId = productItem.getAttribute("data-product-id");
