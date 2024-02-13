@@ -1,5 +1,6 @@
 let discountApply = true
 async function calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
+  console.log("calculateTotalPrice")
   let totalPrice = 0;
   let anyCheckboxChecked = false;
   if (widgetElement) {
