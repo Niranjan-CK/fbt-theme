@@ -10,7 +10,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
           var _a, _b, _c, _d, _e, _f;
           const checkbox = productItem.querySelector('input[type="checkbox"]');
         console.log(productItem,'productItem')
-        console.log(checkbox,'checkbox',checkbox.checked)
+        console.log(checkbox,'checkbox')
         
           if (checkbox && checkbox.checked) {
         console.log('trigger checkbox')
