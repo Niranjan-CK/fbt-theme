@@ -9,35 +9,16 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
       productList.forEach((productItem) => {
           var _a, _b, _c, _d, _e, _f;
           const checkbox = productItem.querySelector('input[type="checkbox"]');
-        console.log(productItem,'productItem')
-        console.log(checkbox,'checkbox')
-        
           if (checkbox && checkbox.checked) {
-        console.log('trigger checkbox')
-            
               anyCheckboxChecked = true;
               let productRef = products;
-              console.log('------------------------')
-            
-              console.log(products)
-              console.log('------------------------')
-            
               let productId = productItem.getAttribute("data-product-id");
               let product = productRef.find((product) => Number(product.id) === Number(productId));
-            console.log('---------product---------------')
-            
-              console.log(product)
-              console.log('----------product--------------')
               let selectedIndex = (_a = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _a === void 0 ? void 0 : _a.selectedIndex;
-            console.log(selectedIndex,'selectedIndex')
               let price = product?.price
-                console.log(price,'price')
               if (price){
                 totalPrice += price;
-              }
-            console.log(totalPrice,'totalPrice')
-                  
-            
+              }            
           }
       });
       const formattedTotalPrice = anyCheckboxChecked
@@ -68,10 +49,6 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
             }
           }
       });
-    const discount = {
-      type:discountType,
-      value:discountValue
-    }
     setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,widgetElement)
   }
 }
@@ -205,7 +182,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
               const productItem = widgetElement.querySelector(`.sf-product-grid .sf-product-item[data-product-id="${productId}"]`);
               let product = products.find((product) => Number(product.id) === Number(productId));
               let selectedIndex = (_c = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _c === void 0 ? void 0 : _c.selectedIndex;
-              let price = (_f = (_e = (_d = product === null || product === void 0 ? void 0 : product.variants) === null || _d === void 0 ? void 0 : _d[selectedIndex]) === null || _e === void 0 ? void 0 : _e.variant_price) !== null && _f !== void 0 ? _f : (_h = (_g = product === null || product === void 0 ? void 0 : product.variants) === null || _g === void 0 ? void 0 : _g[0]) === null || _h === void 0 ? void 0 : _h.variant_price;
+              let price = product?.price
               if (price)
                   totalPrice += price;
           }
