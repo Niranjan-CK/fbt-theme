@@ -62,7 +62,6 @@ async function cartButtonText(widgetElement, checkboxCount) {
   const multiCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-multi-cart");
   const twoCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-two-cart");
   const singleCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-single-cart");
-  console.log(checkboxCount,'checkboxCount')
   if (checkboxCount === 2) {
       if (twoCartElement)
           twoCartElement.style.display = "block";
@@ -71,7 +70,7 @@ async function cartButtonText(widgetElement, checkboxCount) {
       if (singleCartElement)
           singleCartElement.style.display = "none";
   }
-  else if (checkboxCount === 1) {
+  else if (checkboxCount === 1 || checkboxCount === 0) {
       if (twoCartElement)
           twoCartElement.style.display = "none";
       if (multiCartElement)
@@ -95,7 +94,6 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
       const firstElement = widgetElement.querySelector(".sf-product-checkbox");
       let checkedCount = 0
-    console.log(checkboxes,'checkboxes')
       checkboxes.forEach((checkbox) => {
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
           if (!productItem)
@@ -137,7 +135,6 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         
         
       });
-    console.log(checkedCount,'ssscheckedCountssss');
     const discountTotalAmount = widgetElement.querySelector('sf-original-price-vs');
     
       if(  checkedCount < (checkboxes.length) || !firstElement.checked)
