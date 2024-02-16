@@ -109,7 +109,10 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           const productPrice = productItem.querySelector(".sf-price-container");
           const thisItem = productItem.querySelector(".sf-this-item")
           const checkboxInput = checkbox;
-        
+          const productDetails = widgetElement.querySelector(`tr.sf-product-list-item[data-product-id="${productId}"]`);
+            if(productDetails){
+              productDetails.style.opacity = checkboxInput.checked ? "1": "0.5";
+            }
           if (productImage) {
               productImage.style.opacity = checkboxInput.checked ? "1" : "0.5";
           }
@@ -124,11 +127,6 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           }
           if (checkboxInput.checked) {
               checkedCount++;
-          }else{
-             const productDetails = widgetElement.querySelector(`tr.sf-product-list-item[data-product-id="${productId}"]`);
-            if(productDetails){
-              productDetails.style.opacity = '0.5';
-            }
           }
           if (thisItem)
           {
