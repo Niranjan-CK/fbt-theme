@@ -126,6 +126,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
               productPrice.style.opacity = checkboxInput.checked ? "1" : "0.5";
           }
           if (checkboxInput.checked) {
+            console.log(checkedCount,'checkedCount')
               checkedCount++;
           }
           if (thisItem)
