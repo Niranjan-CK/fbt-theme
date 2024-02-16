@@ -94,7 +94,8 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
       const firstElement = widgetElement.querySelector(".sf-product-checkbox");
       let checkedCount = 0
-      checkboxes.forEach((checkbox) => {
+      let addOnCount = 0
+      checkboxes.forEach((checkbox,index) => {
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
           if (!productItem)
               return;
@@ -125,7 +126,9 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
               productPrice.style.opacity = checkboxInput.checked ? "1" : "0.5";
           }
           if (checkboxInput.checked) {
-            
+            if(index>0){
+              addOnCount++
+            }
               checkedCount++;
           }
           if (thisItem)
@@ -169,8 +172,8 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       cartButtonText(widgetElement,checkedCount)
       const addOnElement = widgetElement.querySelector(".sf-add-on-product");
       if (addOnElement) {
-          const addOnText = checkedCount <= 1 ? "Add-on" : "Add-ons";
-          addOnElement.innerHTML = `${checkedCount < 0 ? 0 : checkedCount} ${addOnText}`;
+          const addOnText = addOnCount <= 1 ? "Add-on" : "Add-ons";
+          addOnElement.innerHTML = `${addOnCount < 0 ? 0 : addOnCount} ${addOnText}`;
         
       }
       calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType);
