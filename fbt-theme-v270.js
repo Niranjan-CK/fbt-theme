@@ -169,7 +169,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
               discountTotalAmount.style.display = 'block';
         }
       }
-      cartButtonText(widgetElement,checkedCount+1)
+      cartButtonText(widgetElement,checkedCount)
       const addOnElement = widgetElement.querySelector(".sf-add-on-product");
       if (addOnElement) {
           const addOnText = checkedCount <= 1 ? "Add-on" : "Add-ons";
