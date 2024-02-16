@@ -95,7 +95,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
       const firstElement = widgetElement.querySelector(".sf-product-checkbox");
       let checkedCount = 0
-    
+    console.log(checkboxes,'checkboxes')
       checkboxes.forEach((checkbox) => {
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
           if (!productItem)
