@@ -94,7 +94,8 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
   const updateCheckedCount = () => {
       const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
       const firstElement = widgetElement.querySelector(".sf-product-checkbox");
-      let checkedCount = firstElement.checked? -1:0;
+      let checkedCount = 0
+    
       checkboxes.forEach((checkbox) => {
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
           if (!productItem)
@@ -138,7 +139,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       });
     const discountTotalAmount = widgetElement.querySelector('sf-original-price-vs');
     
-      if(  checkedCount < (checkboxes.length - 1) || !firstElement.checked)
+      if(  checkedCount < (checkboxes.length) || !firstElement.checked)
       {
         discountApply = false
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
@@ -148,7 +149,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           }
 
       }
-        else if(checkedCount === -1){
+        else if(checkedCount === 0){
           discountApply = false
           const addOnElement = widgetElement.querySelector(".sf-add-on-product-price");
       if (addOnElement) {
