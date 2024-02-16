@@ -137,6 +137,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         
         
       });
+    console.log(checkedCount,'ssscheckedCountssss');
     const discountTotalAmount = widgetElement.querySelector('sf-original-price-vs');
     
       if(  checkedCount < (checkboxes.length) || !firstElement.checked)
