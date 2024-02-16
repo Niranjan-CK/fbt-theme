@@ -62,7 +62,7 @@ async function cartButtonText(widgetElement, checkboxCount) {
   const multiCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-multi-cart");
   const twoCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-two-cart");
   const singleCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-single-cart");
-  
+  console.log(checkboxCount,'checkboxCount')
   if (checkboxCount === 2) {
       if (twoCartElement)
           twoCartElement.style.display = "block";
@@ -126,7 +126,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
               productPrice.style.opacity = checkboxInput.checked ? "1" : "0.5";
           }
           if (checkboxInput.checked) {
-            console.log(checkedCount,'checkedCount')
+            
               checkedCount++;
           }
           if (thisItem)
