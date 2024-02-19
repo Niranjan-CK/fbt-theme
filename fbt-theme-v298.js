@@ -211,7 +211,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
               let selectedIndex = (_c = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _c === void 0 ? void 0 : _c.selectedIndex;
               console.log(selectedIndex,'selectedIndex')
             
-            console.log(product.variants[selectedIndex - 1])
+            console.log(product.variants)
             
             let price = product?.price
               if (price)
