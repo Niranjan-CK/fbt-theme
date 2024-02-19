@@ -1,6 +1,5 @@
 let discountApply = true
 async function calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
-  console.log('total price');
   let totalPrice = 0;
   let anyCheckboxChecked = false;
   if (widgetElement) {
@@ -15,8 +14,6 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               let productId = productItem.getAttribute("data-product-id");
               let product = productRef.find((product) => Number(product.id) === Number(productId));
               let selectedIndex = (_a = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _a === void 0 ? void 0 : _a.selectedIndex;
-              console.log(selectedIndex,'selectedIndex')
-            console.log(product.variants[Number(selectedIndex) -1]?.variant_price)
               let price = selectedIndex > 0 ? product.variants[Number(selectedIndex) -1]?.variant_price : product?.price
               if (price){
                 totalPrice += price;
@@ -225,6 +222,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
   }
 }
 function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,widgetElement){
+  console.log(currency,'sddsdsds')
   if (totalPriceTextValue) {
     let discountAmount
     let finalAmount
@@ -294,7 +292,6 @@ async function fbtTableUtils(widgetElement) {
   }
 }
 function fbtProductView(products,currency,totalPriceText,discountValue,discountType) {
-  console.log('fbtProductView');
 const productList = products  
 const widgetElement = document.querySelector('.sf-container');
 const tableElement = document.querySelector('.sf-table') 
