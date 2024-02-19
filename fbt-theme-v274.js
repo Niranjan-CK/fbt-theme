@@ -15,6 +15,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               let productId = productItem.getAttribute("data-product-id");
               let product = productRef.find((product) => Number(product.id) === Number(productId));
               let selectedIndex = (_a = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _a === void 0 ? void 0 : _a.selectedIndex;
+              console.log(selectedIndex,'selectedIndex')
               let price = product?.price
               if (price){
                 totalPrice += price;
