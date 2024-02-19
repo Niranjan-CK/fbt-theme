@@ -13,11 +13,8 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
         let productId = productItem.getAttribute("data-product-id");
         let product = productRef.find((product) => Number(product.id) === Number(productId));
 
-        // Check if the dropdown element exists before accessing selectedIndex
         let dropdown = productItem.querySelector(".sf-product-variants-dropdown");
         let selectedIndex = dropdown ? dropdown.selectedIndex : null;
-        console.log(selectedIndex,'selectedIndex')
-        // Ensure selectedIndex is not null before using it
      
             let price = selectedIndex > 0 ? product.variants[Number(selectedIndex) - 1]?.variant_price : product?.price;
             if (price) {
@@ -204,22 +201,30 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
           }
         });
       }
-      const checkboxes = productList === null || productList === void 0 ? void 0 : productList.querySelectorAll('input[type="checkbox"]');
-      checkboxes === null || checkboxes === void 0 ? void 0 : checkboxes.forEach((checkbox) => {
-          var _a, _b, _c, _d, _e, _f, _g, _h;
-          if (checkbox && checkbox.checked) {
-              anyCheckboxChecked = true;
-              const productId = checkbox.getAttribute("id");
-              const productItem = widgetElement.querySelector(`.sf-product-grid .sf-product-item[data-product-id="${productId}"]`);
-              let product = products.find((product) => Number(product.id) === Number(productId));
-              // let selectedIndex = (_c = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _c === void 0 ? void 0 : _c.selectedIndex;
-              let selectedIndex = (_a = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _a === void 0 ? void 0 : _a.selectedIndex;
-            console.log(selectedIndex,'selectedIndex',_a)
-            let price = selectedIndex > 0 ? product.variants[Number(selectedIndex) -1]?.variant_price : product?.price
-              if (price)
-                  totalPrice += price;
-          }
-      });
+      const checkboxes = productList?.querySelectorAll('input[type="checkbox"]');
+checkboxes?.forEach((checkbox) => {
+    if (checkbox && checkbox.checked) {
+        anyCheckboxChecked = true;
+        const productId = checkbox.getAttribute("id");
+        const productItem = widgetElement.querySelector(`.sf-product-grid .sf-product-item[data-product-id="${productId}"]`);
+        if (productItem) {
+            const variantDropdown = productItem.querySelector(".sf-product-variants-dropdown");
+            console.log(variantDropdown, 'variantDropdown');
+            if (variantDropdown) {
+                let selectedIndex = variantDropdown.selectedIndex;
+                console.log(selectedIndex, 'selectedIndex');
+                let price = selectedIndex > 0 ? product.variants[Number(selectedIndex) - 1]?.variant_price : product?.price;
+                if (price)
+                    totalPrice += price;
+            } else {
+                console.log("Variant dropdown not found for product with ID:", productId);
+            }
+        } else {
+            console.log("Product item not found for product with ID:", productId);
+        }
+    }
+});
+
       if (productList) {
           const formattedTotalPrice = anyCheckboxChecked
               ? totalPrice.toFixed(2)
