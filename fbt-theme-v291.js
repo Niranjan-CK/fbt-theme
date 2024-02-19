@@ -205,7 +205,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
           if (checkbox && checkbox.checked) {
               anyCheckboxChecked = true;
               const productId = checkbox.getAttribute("id");
-              const productItem = widgetElement.querySelector(`.sf-product-grid .sf-product-item[data-product-id="${productId}"]`);
+              const productItem = widgetElement.querySelector(`.sf-product-list-item[data-product-id="${productId}"]`);
               let product = products.find((product) => Number(product.id) === Number(productId));
             console.log(productItem,'productItem')
             console.log(productItem.querySelector(".sf-product-variants-dropdown"))
