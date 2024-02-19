@@ -17,6 +17,9 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               let price = selectedIndex > 0 ? product.variants[Number(selectedIndex) -1]?.variant_price : product?.price
               if (price){
                 totalPrice += price;
+                if(index ===0){
+                console.log(price)
+                }
                 if(index > 0)
                 {
                   addOnTotalPrice += price
