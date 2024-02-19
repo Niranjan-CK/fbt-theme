@@ -207,10 +207,10 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
               const productId = checkbox.getAttribute("id");
               const productItem = widgetElement.querySelector(`.sf-product-list-item[data-product-id="${productId}"]`);
               let product = products.find((product) => Number(product.id) === Number(productId));
-            console.log(productItem,'productItem')
-            console.log(productItem.querySelector(".sf-product-variants-dropdown"))
+
               let selectedIndex = (_c = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _c === void 0 ? void 0 : _c.selectedIndex;
-              let price = product?.price
+              console.log(selectedIndex,'selectedIndex')
+            let price = product?.price
               if (price)
                   totalPrice += price;
           }
