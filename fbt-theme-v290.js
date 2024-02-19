@@ -17,9 +17,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               let price = selectedIndex > 0 ? product.variants[Number(selectedIndex) -1]?.variant_price : product?.price
               if (price){
                 totalPrice += price;
-                if(index ===0){
-                console.log(price)
-                }
+           
                 if(index > 0)
                 {
                   addOnTotalPrice += price
@@ -209,6 +207,8 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
               const productId = checkbox.getAttribute("id");
               const productItem = widgetElement.querySelector(`.sf-product-grid .sf-product-item[data-product-id="${productId}"]`);
               let product = products.find((product) => Number(product.id) === Number(productId));
+            console.log(productItem,'productItem')
+            console.log(productItem.querySelector(".sf-product-variants-dropdown"))
               let selectedIndex = (_c = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _c === void 0 ? void 0 : _c.selectedIndex;
               let price = product?.price
               if (price)
@@ -225,7 +225,6 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
   }
 }
 function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,widgetElement){
-  console.log(currency,'sddsdsds')
   if (totalPriceTextValue) {
     let discountAmount
     let finalAmount
