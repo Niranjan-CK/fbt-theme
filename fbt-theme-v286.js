@@ -5,27 +5,25 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
   if (widgetElement) {
       const productList = widgetElement.querySelectorAll(`.sf-product-item`);
     let addOnTotalPrice = 0
-      productList.forEach((productItem, index) => {
-    const checkbox = productItem.querySelector('input[type="checkbox"]');
-    if (checkbox && checkbox.checked) {
-        anyCheckboxChecked = true;
-        let productRef = products;
-        let productId = productItem.getAttribute("data-product-id");
-        let product = productRef.find((product) => Number(product.id) === Number(productId));
-
-        let dropdown = productItem.querySelector(".sf-product-variants-dropdown");
-        let selectedIndex = dropdown ? dropdown.selectedIndex : null;
-     
-            let price = selectedIndex > 0 ? product.variants[Number(selectedIndex) - 1]?.variant_price : product?.price;
-            if (price) {
+    productList.forEach((productItem,index) => {
+          var _a, _b, _c, _d, _e, _f;
+          const checkbox = productItem.querySelector('input[type="checkbox"]');
+          if (checkbox && checkbox.checked) {
+              anyCheckboxChecked = true;
+              let productRef = products;
+              let productId = productItem.getAttribute("data-product-id");
+              let product = productRef.find((product) => Number(product.id) === Number(productId));
+              let selectedIndex = (_a = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _a === void 0 ? void 0 : _a.selectedIndex;
+              let price = selectedIndex > 0 ? productItem[Number(selectedIndex) -1]?.variant_price  : product?.price
+              if (price){
                 totalPrice += price;
-                if (index > 0) {
-                    addOnTotalPrice += price;
+                if(index > 0)
+                {
+                  addOnTotalPrice += price
                 }
-            }
-        
-    }
-});
+              }            
+          }
+      });
 
       const formattedTotalPrice = anyCheckboxChecked
           ? totalPrice.toFixed(2)
