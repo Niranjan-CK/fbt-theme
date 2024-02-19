@@ -5,7 +5,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
   if (widgetElement) {
       const productList = widgetElement.querySelectorAll(`.sf-product-item`);
     let addOnTotalPrice = 0
-    productList.forEach((productItem,index) => {
+      productList.forEach((productItem,index) => {
           var _a, _b, _c, _d, _e, _f;
           const checkbox = productItem.querySelector('input[type="checkbox"]');
           if (checkbox && checkbox.checked) {
@@ -14,7 +14,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               let productId = productItem.getAttribute("data-product-id");
               let product = productRef.find((product) => Number(product.id) === Number(productId));
               let selectedIndex = (_a = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _a === void 0 ? void 0 : _a.selectedIndex;
-              let price =  product?.price
+              let price = selectedIndex > 0 ? product.variants[Number(selectedIndex) -1]?.variant_price : product?.price
               if (price){
                 totalPrice += price;
                 if(index > 0)
@@ -24,7 +24,6 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               }            
           }
       });
-
       const formattedTotalPrice = anyCheckboxChecked
           ? totalPrice.toFixed(2)
           : "0.00";
@@ -185,7 +184,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
   widgetElement.addEventListener("change", updateCheckedCount);
 }
 async function fbtTablePriceCalculator(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
-  console.log('fbtTablePriceCalculator')
+
   let totalPrice = 0;
   let anyCheckboxChecked = false;
   if (widgetElement) {
@@ -199,30 +198,20 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
           }
         });
       }
-      const checkboxes = productList?.querySelectorAll('input[type="checkbox"]');
-checkboxes?.forEach((checkbox) => {
-    if (checkbox && checkbox.checked) {
-        anyCheckboxChecked = true;
-        const productId = checkbox.getAttribute("id");
-        const productItem = widgetElement.querySelector(`.sf-product-grid .sf-product-item[data-product-id="${productId}"]`);
-        if (productItem) {
-            const variantDropdown = productItem.querySelector(".sf-product-variants-dropdown");
-            console.log(variantDropdown, 'variantDropdown');
-            if (variantDropdown) {
-                let selectedIndex = variantDropdown.selectedIndex;
-                console.log(selectedIndex, 'selectedIndex');
-                let price = selectedIndex > 0 ? product.variants[Number(selectedIndex) - 1]?.variant_price : product?.price;
-                if (price)
-                    totalPrice += price;
-            } else {
-                console.log("Variant dropdown not found for product with ID:", productId);
-            }
-        } else {
-            console.log("Product item not found for product with ID:", productId);
-        }
-    }
-});
-
+      const checkboxes = productList === null || productList === void 0 ? void 0 : productList.querySelectorAll('input[type="checkbox"]');
+      checkboxes === null || checkboxes === void 0 ? void 0 : checkboxes.forEach((checkbox) => {
+          var _a, _b, _c, _d, _e, _f, _g, _h;
+          if (checkbox && checkbox.checked) {
+              anyCheckboxChecked = true;
+              const productId = checkbox.getAttribute("id");
+              const productItem = widgetElement.querySelector(`.sf-product-grid .sf-product-item[data-product-id="${productId}"]`);
+              let product = products.find((product) => Number(product.id) === Number(productId));
+              let selectedIndex = (_c = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _c === void 0 ? void 0 : _c.selectedIndex;
+              let price = product?.price
+              if (price)
+                  totalPrice += price;
+          }
+      });
       if (productList) {
           const formattedTotalPrice = anyCheckboxChecked
               ? totalPrice.toFixed(2)
@@ -233,6 +222,7 @@ checkboxes?.forEach((checkbox) => {
   }
 }
 function setTotalPrice(discountValue,discountType,formattedTotalPrice,totalPriceTextValue,currency,totalPriceText,widgetElement){
+  console.log(currency,'sddsdsds')
   if (totalPriceTextValue) {
     let discountAmount
     let finalAmount
