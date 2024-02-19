@@ -92,8 +92,8 @@ async function cartButtonText(widgetElement, checkboxCount) {
 async function checkboxTriggered(products, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement) {
   // Function to calculate the number of checked products
   const updateCheckedCount = () => {
-      const checkboxes = widgetElement.querySelectorAll(".sf-product-checkbox");
-      const firstElement = widgetElement.querySelector(".sf-product-checkbox");
+      const checkboxes = widgetElement?.querySelectorAll(".sf-product-checkbox");
+      const firstElement = widgetElement?.querySelector(".sf-product-checkbox");
       let checkedCount = 0
       let addOnCount = 0
       checkboxes.forEach((checkbox,index) => {
@@ -141,7 +141,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       });
     const discountTotalAmount = widgetElement.querySelector('sf-original-price-vs');
     
-      if(  checkedCount < (checkboxes.length) || !firstElement.checked)
+      if(  checkedCount < (checkboxes?.length) || !firstElement?.checked)
       {
         discountApply = false
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
@@ -210,7 +210,7 @@ async function fbtTablePriceCalculator(products, widgetElement,currency,totalPri
 
               let selectedIndex = (_c = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _c === void 0 ? void 0 : _c.selectedIndex;
                         
-            let price = selectedIndex > 0 ? product.variants?.[selectedIndex - 1]?.variant_price : product?.price
+            let price = selectedIndex > 0 ? product.variants?.[selectedIndex]?.variant_price : product?.price
               if (price)
                   totalPrice += price;
           }
