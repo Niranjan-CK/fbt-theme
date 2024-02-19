@@ -1,5 +1,6 @@
 let discountApply = true
 async function calculateTotalPrice(products, widgetElement,currency,totalPriceText,discountValue,discountType) {
+  console.log('total price');
   let totalPrice = 0;
   let anyCheckboxChecked = false;
   if (widgetElement) {
@@ -291,6 +292,7 @@ async function fbtTableUtils(widgetElement) {
   }
 }
 function fbtProductView(products,currency,totalPriceText,discountValue,discountType) {
+  console.log('fbtProductView');
 const productList = products  
 const widgetElement = document.querySelector('.sf-container');
 const tableElement = document.querySelector('.sf-table') 
