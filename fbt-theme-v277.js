@@ -16,7 +16,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
               let product = productRef.find((product) => Number(product.id) === Number(productId));
               let selectedIndex = (_a = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(".sf-product-variants-dropdown")) === null || _a === void 0 ? void 0 : _a.selectedIndex;
               console.log(selectedIndex,'selectedIndex')
-            console.log(product.variants[Number(selectedIndex) -1]?.price)
+            console.log(product.variants[Number(selectedIndex) -1])
               let price = selectedIndex > 0 ? product.variants[Number(selectedIndex) -1]?.price : product?.price
               if (price){
                 totalPrice += price;
