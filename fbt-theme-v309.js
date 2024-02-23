@@ -298,7 +298,10 @@ async function selectBtnAction(widgetElement) {
       return;
   const selectBtns = widgetElement.querySelectorAll(".sf-select-btn");
   selectBtns.forEach((selectBtn) => {
+        console.log("mainnnn")
+    
       selectBtn.addEventListener("click", () => {
+        console.log("sdfd")
           var _a, _b, _c;
           const productItem = selectBtn.closest(".sf-product-item");
           if (!productItem)
