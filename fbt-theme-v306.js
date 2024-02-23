@@ -310,7 +310,6 @@ async function selectBtnAction(widgetElement) {
           const transitionTime = addToCartBtn ? 500 : 150;
           if (addToCartBtn) {
               addToCartBtn.style.display = "block";
-              outOfStock("main-product", addToCartBtn);
           }
           if (dropdown) {
               setTimeout(() => {
