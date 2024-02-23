@@ -293,6 +293,41 @@ async function fbtTableUtils(widgetElement) {
         }
   }
 }
+async function selectBtnAction(widgetElement) {
+  if (!widgetElement)
+      return;
+  const selectBtns = widgetElement.querySelectorAll(".sf-select-btn");
+  selectBtns.forEach((selectBtn) => {
+      selectBtn.addEventListener("click", () => {
+          var _a, _b, _c;
+          const productItem = selectBtn.closest(".sf-product-item");
+          console.log(productItem);
+          if (!productItem)
+              return;
+          const addToCartBtn = productItem.querySelector(".sf-add-to-cart-btn");
+          const dropdown = productItem.querySelector(".sf-product-variants-dropdown");
+          selectBtn.style.display = "none";
+          const transitionTime = addToCartBtn ? 500 : 150;
+          if (addToCartBtn) {
+              addToCartBtn.style.display = "block";
+              outOfStock("main-product", addToCartBtn);
+          }
+          if (dropdown) {
+              setTimeout(() => {
+                  dropdown.style.display = "block";
+              }, transitionTime);
+              const imageElement = productItem.querySelector('[data-tag="product-image"]');
+              const productId = productItem.getAttribute("data-product-id");
+              if (!productId)
+                  return;
+              const firstVariant = (_c = (_b = (_a = window.StoreFrog) === null || _a === void 0 ? void 0 : _a.variants) === null || _b === void 0 ? void 0 : _b[productId]) === null || _c === void 0 ? void 0 : _c[0];
+              if (imageElement && (firstVariant === null || firstVariant === void 0 ? void 0 : firstVariant.variant_featured_image) != null) {
+                  imageElement.setAttribute("src", firstVariant.variant_featured_image);
+              }
+          }
+      });
+  });
+}
 function fbtProductView(products,currency,totalPriceText,discountValue,discountType) {
 const productList = products  
 const widgetElement = document.querySelector('.sf-container');
@@ -301,5 +336,6 @@ calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountV
 checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement)
 fbtTableUtils(widgetElement);
 fbtTablePriceCalculator(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
-  
+selectBtnAction(widgetElement)
+
 }
