@@ -301,7 +301,6 @@ async function selectBtnAction(widgetElement) {
       selectBtn.addEventListener("click", () => {
           var _a, _b, _c;
           const productItem = selectBtn.closest(".sf-product-item");
-          console.log(productItem);
           if (!productItem)
               return;
           const addToCartBtn = productItem.querySelector(".sf-add-to-cart-btn");
