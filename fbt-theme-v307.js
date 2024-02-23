@@ -312,9 +312,14 @@ async function selectBtnAction(widgetElement) {
               addToCartBtn.style.display = "block";
           }
           if (dropdown) {
+
+                const optionCount = dropdown.querySelectorAll("option").length;
+                
+            if(optionCount>1){
               setTimeout(() => {
                   dropdown.style.display = "block";
               }, transitionTime);
+            }
               const imageElement = productItem.querySelector('[data-tag="product-image"]');
               const productId = productItem.getAttribute("data-product-id");
               if (!productId)
