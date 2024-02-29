@@ -340,14 +340,17 @@ async function selectBtnAction(widgetElement) {
   });
 }
 function fbtProductView(products,currency,totalPriceText,discountValue,discountType,isFbt) {
-  console.log(isFbt,'isFbt')
+
 const productList = products  
 const widgetElement = document.querySelector('.sf-container');
 const tableElement = document.querySelector('.sf-table') 
-calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
-checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement)
-fbtTableUtils(widgetElement);
-fbtTablePriceCalculator(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
+  if(isFbt){
+    calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
+    checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement)
+    fbtTableUtils(widgetElement);
+    fbtTablePriceCalculator(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
+  }
+
 selectBtnAction(widgetElement)
 
 }
