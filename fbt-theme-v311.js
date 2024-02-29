@@ -33,6 +33,7 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
           if (widgetElement) {
               const addOnPrice = widgetElement.querySelector(".sf-add-on-product-price");
               const thisPrice = widgetElement.querySelector('.sf-this-product-price');
+            console.log(widgetElement)
             console.log(thisPrice,'thisPrice')
               if (thisPrice && firstItemPr) {
                   thisPrice.innerHTML = `${currency}  ${firstItemPr}`;
