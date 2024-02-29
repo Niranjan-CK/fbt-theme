@@ -96,15 +96,6 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       const firstElement = widgetElement?.querySelector(".sf-product-checkbox");
       let checkedCount = 0
       let addOnCount = 0
-
-    const productLists = widgetElement?.querySelector(".sf-product-list");
-    if(productLists){
-      const allProducts = widgetElement?.querySelectorAll(".sf-product-price");
-      allProducts.forEach((item)=>{
-        const textNode = document.createTextNode(currency);
-        item.parentNode.insertBefore(textNode, item);
-      })
-    }
       checkboxes.forEach((checkbox,index) => {
           const productItem = checkbox.closest(".sf-product-item , .sf-product-list-item ");
           if (!productItem)
