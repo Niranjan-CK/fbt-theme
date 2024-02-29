@@ -342,7 +342,6 @@ async function selectBtnAction(widgetElement) {
 function fbtProductView(products,currency,totalPriceText,discountValue,discountType) {
 const productList = products  
 const widgetElement = document.querySelector('.sf-container');
-  console.log(widgetElement,'widgetElement')
 const tableElement = document.querySelector('.sf-table') 
 calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
 checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement)
