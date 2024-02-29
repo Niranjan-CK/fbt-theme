@@ -339,7 +339,8 @@ async function selectBtnAction(widgetElement) {
       });
   });
 }
-function fbtProductView(products,currency,totalPriceText,discountValue,discountType) {
+function fbtProductView(products,currency,totalPriceText,discountValue,discountType,isFbt) {
+  console.log(isFbt,'isFbt')
 const productList = products  
 const widgetElement = document.querySelector('.sf-container');
 const tableElement = document.querySelector('.sf-table') 
