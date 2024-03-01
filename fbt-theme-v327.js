@@ -174,7 +174,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         discountApply = true
         const discountTextElements = widgetElement.getElementsByClassName('sf-discount-text');
         for (let i = 0; i < discountTextElements.length; i++) {
-              discountTextElements[i].style.display = 'block';
+              discountTextElements[i].style.display = discountValue > 0 ?'block':'none';
           }
         if(discountTotalAmount){
               discountTotalAmount.style.display = 'block';
