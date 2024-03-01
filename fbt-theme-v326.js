@@ -100,8 +100,10 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
     if(productLists){
       const allProducts = widgetElement?.querySelectorAll(".sf-product-price");
       allProducts.forEach((item)=>{
-        const textNode = document.createTextNode(currency);
-        item.parentNode.insertBefore(textNode, item);
+        if (!item.textContent.includes(currency)) {
+          const textNode = document.createTextNode(currency);
+          item.parentNode.insertBefore(textNode, item);
+        }
       })
     }
       checkboxes.forEach((checkbox,index) => {
