@@ -114,14 +114,16 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         const productImage = tableElement ?    
            widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`) :
             productItem.querySelector(".sf-product-image");
-       
+       console.log(productImage,'productImage')
           const productDropdown = productItem.querySelector(".sf-product-variants-dropdown");
           const productTitle = productItem.querySelector(".sf-product-title");
           const productPrice = productItem.querySelector(".sf-price-container");
           const thisItem = productItem.querySelector(".sf-this-item")
           const checkboxInput = checkbox;
           const productDetails = widgetElement.querySelector(`tr.sf-product-list-item[data-product-id="${productId}"]`);
+        console.log(productDetails,'productDetails')
             if(productDetails){
+              
               productDetails.style.opacity = checkboxInput.checked ? "1": "0.5";
             }
           if (productImage) {
