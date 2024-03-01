@@ -111,19 +111,15 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           if (!productItem)
               return;
         const productId = checkbox.id
-        console.log(tableElement,'tableElement')
-        console.log(widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`),'widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`)')
         const productImage = tableElement ?    
            widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`) :
             productItem.querySelector(".sf-product-image");
-       console.log(productImage,'productImage')
           const productDropdown = productItem.querySelector(".sf-product-variants-dropdown");
           const productTitle = productItem.querySelector(".sf-product-title");
           const productPrice = productItem.querySelector(".sf-price-container");
           const thisItem = productItem.querySelector(".sf-this-item")
           const checkboxInput = checkbox;
           const productDetails = widgetElement.querySelector(`tr.sf-product-list-item[data-product-id="${productId}"]`);
-        console.log(productDetails,'productDetails')
             if(productDetails){
               
               productDetails.style.opacity = checkboxInput.checked ? "1": "0.5";
@@ -349,7 +345,8 @@ function fbtProductView(products,currency,totalPriceText,discountValue,discountT
 
 const productList = products  
 const widgetElement = document.querySelector('.sf-container');
-const tableElement = document.querySelector('.sf-table') 
+const tableElement = document.querySelector('.sf-fbt-table')
+  
   if(isFbt){
     calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
     checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement)
