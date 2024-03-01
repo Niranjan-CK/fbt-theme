@@ -111,6 +111,8 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
           if (!productItem)
               return;
         const productId = checkbox.id
+        console.log(tableElement,'tableElement')
+        console.log(widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`),'widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`)')
         const productImage = tableElement ?    
            widgetElement.querySelector(`[data-product-id="${productId}"].sf-product-item .sf-product-image`) :
             productItem.querySelector(".sf-product-image");
