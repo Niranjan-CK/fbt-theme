@@ -359,17 +359,23 @@ selectBtnAction(widgetElement)
 }
 
 function onSale(products,currency,doc){
+  console.log('onSale');
   const currencySymbol = currency
   if (!products){
     return 
   }
   products.forEach((product) => {
       const { id, price, compareAtPrice } = product;
+    console.log('products');
       if (compareAtPrice && compareAtPrice > price) {
           const widget = doc.querySelector('.sf-container')
+    console.log('widget');
+        
           if (!widget)
               return;
           const element = widget.querySelector(`[data-product-id="${id}"]`);
+    console.log('element');
+        
           if (element && element.querySelector('[data-tag="on-sale"]')) {
               return;
           }
