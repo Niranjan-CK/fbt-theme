@@ -379,7 +379,7 @@ function onSale(products,currency,doc){
           if (element && element.querySelector('[data-tag="on-sale"]')) {
               return;
           }
-        console.log('element');
+        console.log(id,'element',element);
           if (element) {
               const priceElement = element.querySelector('[data-tag="price"]');
             console.log('priceElement');
