@@ -374,16 +374,22 @@ function onSale(products,currency,doc){
           if (!widget)
               return;
           const element = widget.querySelector(`[data-product-id="${id}"]`);
-    console.log('element');
+    
         
           if (element && element.querySelector('[data-tag="on-sale"]')) {
               return;
           }
+        console.log('element');
           if (element) {
               const priceElement = element.querySelector('[data-tag="price"]');
+            console.log('priceElement');
               if (priceElement) {
                   const currentPrice = (product.price ).toFixed(2);
+            console.log('currentPrice',currentPrice);
+                
                   const currentCompareAtPrice = (product.compareAtPrice ).toFixed(2);
+            console.log('currentCompareAtPrice',currentCompareAtPrice);
+                
                   priceElement.innerHTML = `${currentCompareAtPrice}`;
                   priceElement.style.textDecoration = "line-through";
                   priceElement.style.color = "#6D7175";
