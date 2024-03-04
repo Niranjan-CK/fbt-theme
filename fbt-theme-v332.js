@@ -358,7 +358,7 @@ selectBtnAction(widgetElement)
 
 }
 
-function onSale(products,currentcy,doc){
+function onSale(products,currency,doc){
   const currencySymbol = currency
   if (!products){
     return 
