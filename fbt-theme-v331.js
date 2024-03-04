@@ -357,3 +357,62 @@ const tableElement = document.querySelector('.sf-fbt-table')
 selectBtnAction(widgetElement)
 
 }
+
+function onSale(products,currentcy,doc){
+  const currencySymbol = currency
+  if (!products){
+    return 
+  }
+  products.forEach((product) => {
+      const { id, price, compareAtPrice } = product;
+      if (compareAtPrice && compareAtPrice > price) {
+          const widget = doc.querySelector('.sf-container')
+          if (!widget)
+              return;
+          const element = widget.querySelector(`[data-product-id="${id}"]`);
+          if (element && element.querySelector('[data-tag="on-sale"]')) {
+              return;
+          }
+          if (element) {
+              const priceElement = element.querySelector('[data-tag="price"]');
+              if (priceElement) {
+                  const currentPrice = (product.price ).toFixed(2);
+                  const currentCompareAtPrice = (product.compareAtPrice ).toFixed(2);
+                  priceElement.innerHTML = `${currentCompareAtPrice}`;
+                  priceElement.style.textDecoration = "line-through";
+                  priceElement.style.color = "#6D7175";
+                  priceElement.style.fontSize = "16px";
+                  const discount = Math.round(((product.compareAtPrice - product.price) /
+                      product.compareAtPrice) *
+                      100);
+                  const discountElement = document.createElement("span");
+                  discountElement.style.display = "block";
+                  discountElement.style.marginLeft = "5px";
+                  discountElement.style.color = "#FF0000";
+                  discountElement.textContent = `${discount}% Off`;
+                  priceElement.insertAdjacentElement("afterend", discountElement);
+                  priceElement.insertAdjacentHTML("beforebegin", `<span class="sf-product-onsale" data-tag="on-sale" style="margin-right: 15px; font-weight:600; font-size:18px;">${currencySymbol}${currentPrice}</span>`);
+              }
+          }
+      }
+      else {
+        const isList = doc.querySelector('.sf-list')
+          const widgetElement = doc.querySelector('.sf-container')
+          if(widgetElement){
+            const productItem = widgetElement.querySelector(`.sf-product-item[data-product-id="${id}"]`);
+            const priceContainer = productItem === null || productItem === void 0 ? void 0 : productItem.querySelector(`.sf-price-container`);
+            if(!priceContainer){
+              return
+            }
+            const priceElement = priceContainer.querySelector('[data-tag=price]')
+
+            if (priceContainer && priceElement && !isList) {
+                const dividerElement = document.createElement("span");
+                dividerElement.style.height = "24px";
+                dividerElement.style.display = "block";
+                priceContainer.appendChild(dividerElement);
+            }
+          }
+      }
+  });
+}
