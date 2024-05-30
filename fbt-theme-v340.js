@@ -102,13 +102,16 @@ console.log("checkedCount checkedCount22222:-")
 
   // Function to calculate the number of checked products
   const updateCheckedCount = () => {
+    console.log("update check")
       const checkboxes = widgetElement?.querySelectorAll(".sf-product-checkbox");
       const firstElement = widgetElement?.querySelector(".sf-product-checkbox");
       let checkedCount = 0
       let addOnCount = 0
     const productLists = widgetElement?.querySelector(".sf-product-list");
+    console.log(productLists,'productLists')
     if(productLists){
       const allProducts = widgetElement?.querySelectorAll(".sf-product-price");
+      console.log(allProducts,'allProductsallProducts')
       allProducts.forEach((item)=>{
         console.log(item,'allproducts')
         if (!item.textContent.includes(currency)) {
@@ -357,8 +360,6 @@ async function selectBtnAction(widgetElement) {
 }
 function fbtProductView(products,currency,totalPriceText,discountValue,discountType,isFbt) {
 console.log('hello world - 1');
-alert('hello word');
-
 const productList = products  
 const widgetElement = document.querySelector('.sf-container');
 const tableElement = document.querySelector('.sf-fbt-table')
