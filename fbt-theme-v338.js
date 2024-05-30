@@ -89,6 +89,12 @@ console.log("checkboxCount:-", checkboxCount)
       if (singleCartElement)
           singleCartElement.style.display = "none";
   }
+  const cs_btn = widgetElement.querySelector('.sf-fbt-add-to-cart-btn')
+  console.log(cs_btn)
+  if(cs_btn){
+    
+    cs_btn.style.display = "block";
+  }
 }
 
 async function checkboxTriggered(products, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement) {
