@@ -115,6 +115,7 @@ console.log("checkedCount checkedCount22222:-")
       allProducts.forEach((item)=>{
         console.log(item,'allproducts')
         if (!item.textContent.includes(currency)) {
+          console.log('currencycurrencycurrencycurrencycurrency',currency);
           const textNode = document.createTextNode(currency);
           item.parentNode.insertBefore(textNode, item);
         }
