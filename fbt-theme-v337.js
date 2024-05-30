@@ -60,6 +60,8 @@ async function calculateTotalPrice(products, widgetElement,currency,totalPriceTe
 
 
 async function cartButtonText(widgetElement, checkboxCount) {
+console.log("widgetElement:-", widgetElement)
+console.log("checkboxCount:-", checkboxCount)
   const multiCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-multi-cart");
   const twoCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-two-cart");
   const singleCartElement = widgetElement === null || widgetElement === void 0 ? void 0 : widgetElement.querySelector(".sf-single-cart");
@@ -90,6 +92,8 @@ async function cartButtonText(widgetElement, checkboxCount) {
 }
 
 async function checkboxTriggered(products, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement) {
+console.log("checkedCount checkedCount22222:-")
+
   // Function to calculate the number of checked products
   const updateCheckedCount = () => {
       const checkboxes = widgetElement?.querySelectorAll(".sf-product-checkbox");
@@ -150,6 +154,7 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
         
       });
     const discountTotalAmount = widgetElement.querySelector('sf-original-price-vs');
+console.log("checkedCount checkedCount:-", checkedCount)
     
       if(  checkedCount < (checkboxes?.length) || !firstElement?.checked)
       {
@@ -191,6 +196,8 @@ async function checkboxTriggered(products, widgetElement,currency,totalPriceText
       fbtTablePriceCalculator(products, widgetElement,currency,totalPriceText,discountValue,discountType);
       
   };
+console.log("checkedCount checkedCount22222ee:-")
+
   updateCheckedCount();
   widgetElement.addEventListener("change", updateCheckedCount);
 }
@@ -342,12 +349,16 @@ async function selectBtnAction(widgetElement) {
   });
 }
 function fbtProductView(products,currency,totalPriceText,discountValue,discountType,isFbt) {
+console.log('hello world - 1');
+alert('hello word');
 
 const productList = products  
 const widgetElement = document.querySelector('.sf-container');
 const tableElement = document.querySelector('.sf-fbt-table')
-  
+   console.log("isFbt isFbt:-", isFbt)
+console.log("isFbt widgetElement:-", widgetElement)
   if(isFbt){
+console.log("isFbt widgetElement test")
     calculateTotalPrice(productList, widgetElement,currency,totalPriceText,discountValue,discountType);
     checkboxTriggered(productList, widgetElement,currency,totalPriceText,discountValue,discountType,tableElement)
     fbtTableUtils(widgetElement);
