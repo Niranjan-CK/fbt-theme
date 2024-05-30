@@ -110,6 +110,7 @@ console.log("checkedCount checkedCount22222:-")
     if(productLists){
       const allProducts = widgetElement?.querySelectorAll(".sf-product-price");
       allProducts.forEach((item)=>{
+        console.log(item,'allproducts')
         if (!item.textContent.includes(currency)) {
           const textNode = document.createTextNode(currency);
           item.parentNode.insertBefore(textNode, item);
